@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
+
+
+    <!-- Bootstrap CSS -->
+     <title>Assets</title>
+  </head>
+  <body>
+    <a href="{% url 'inventory:upload_file' %}">Datei hochladen</a>
+
+    <a href="/admin/">Admin Panel</a>
+
+    <table>
+       <tr>
+           <th>ID</th>
+           <th>Name</th>
+           <th>Hersteller</th>
+           <th>Model</th>
+           <th>Seriennummer</th>
+           <th>Gruppe</th>
+           <th>Netzwerkbereich</th>
+           <th>Standort</th>
+           <th>Redundancy</th>
+           <th>Rolle</th>
+           <th>Abhängigkeiten</th>
+           <th>Kritkalität</th>
+           <th>Konfiguration</th>
+           <th>Kommunikation</th>
+       </tr>
+       {% for device in devices %}
+       <tr>
+           <td>{{ device.id }}</td>
+           <td>{{ device.device_name }}</td>
+           <td>{{ device.product_id.product_supplier_id.name }}</td>
+           <td>{{ device.product_id.model }}</td>
+           <td>{{ device.serial_number }}</td>
+           <td>{{ device.group }}</td>
+           <td>{{ device.network }}</td>
+           <td>{{ device.location }}</td>
+           <td>{{ device.redundancy }}</td>
+           <td>{{ device.role }}</td>
+           <td>{{ device.interdependencies }}</td>
+           <td>{{ device.criticality }}</td>
+           <td>{{ device.configuration_file }}</td>
+           <td>{{ device.communication_capability}}</td>
+       </tr>
+       {% endfor %}
+    </table>
+ </body>
+</html>
