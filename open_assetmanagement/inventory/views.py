@@ -7,15 +7,16 @@ from .forms import UploadFileForm
 from .filehandler import handle_uploaded_file
 from django.urls import reverse
 
+
 class IndexView(generic.ListView):
     template_name = 'inventory/index.html'
     context_object_name = 'devices'
 
     def get_queryset(self):
-    #    """Return the last five published questions."""
-    #    return Device.objects.filter(
-    #        group='1'
-    #    ).order_by('-device_name')[:5]
+        #    """Return the last five published questions."""
+        #    return Device.objects.filter(
+        #        group='1'
+        #    ).order_by('-device_name')[:5]
         return Device.objects.all()
 
 

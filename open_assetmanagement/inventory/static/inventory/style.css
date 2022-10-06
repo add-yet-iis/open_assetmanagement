@@ -65,7 +65,7 @@ input[type=text], select {
 
 input[type=submit] {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: var(--fh_green_std);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -75,12 +75,12 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: var(--fh_silver);
 }
 
 div {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: var(--fh_black_10);
   padding: 20px;
   width: 25%
 }
