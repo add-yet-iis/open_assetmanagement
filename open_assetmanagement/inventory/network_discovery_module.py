@@ -5,7 +5,9 @@ import nmap
 import subprocess
 
 RANGE = "10.0.0.0/24"
-
+CME_SMB = "\x1b[1m\x1b[34mSMB\x1b[0m"
+CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
+# WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
 
 # ------ This is probably not useful and will be skipped
 # def initial_netdiscover():
@@ -32,38 +34,21 @@ RANGE = "10.0.0.0/24"
 #     }
 # }
 
+
 def crackmapexec(scanning_range):
     discovered = {}
-    cmd = 'crackmapexec smb ' + scanning_range
-    returned_output = subprocess.check_output(cmd, shell=True)
-    decoded_output = returned_output.decode("utf-8")
-    print(decoded_output)
-    smb = "\x1b[1m\x1b[34mSMB\x1b[0m"
-    star = "\x1b[1m\x1b[34m[*]\x1b[0m"
-    decoded_output = decoded_output.splitlines()
-    for line in decoded_output:
-        line = line.strip(smb)
-        line = line.split(star)
+    for line in subprocess.check_output('crackmapexec smb ' + scanning_range, shell=True).decode("utf-8").splitlines():
+        line = line.strip(CME_SMB).split(CME_STAR)
         ip_and_name = line[0].split()
-        ip = ip_and_name[0]
-        port = ip_and_name[1]
-        name = ip_and_name[2]
-        os_info = line[1]\
-            .replace(")", "") \
-            .replace("\x00", "")\
-            .split("(")
-        os = os_info[0]
-        domain = os_info[2]
-        smb_signing = os_info[3]
-        smb_v1 = os_info[4]
+        os_info = line[1].replace(")", "").replace("\x00", "").split("(")
         entry = {
-            "os": os,
-            "name": name,
-            "domain": domain,
-            "smb_signing": smb_signing,
-            "smb_v1": smb_v1
+            "os": os_info[0],
+            "name": ip_and_name[2],
+            "domain": os_info[2],
+            "smb_signing": os_info[3],
+            "smb_v1": os_info[4]
         }
-        discovered.update({ip: entry})
+        discovered.update({ip_and_name[0]: entry})
     print(discovered)
     return discovered
 
