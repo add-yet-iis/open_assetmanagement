@@ -18,15 +18,33 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+th:first-of-type {
+  border-top-left-radius: 4px;
+}
+th:last-of-type {
+  border-top-right-radius: 4px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 4px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 4px;
+}
+td:last-of-type{
+    border: 0px;
+}
 
 table td, tabel th {
-  border: 1px solid var(--fh_black_25);
+  border-right: 1px solid var(--fh_black_25);
   padding: 8px;
 }
 
+#marked_red{background-color: red;}
+#marked_orange{background-color: orange;}
+#marked_yellow{background-color: yellow;}
 table tr:nth-child(even){background-color: var(--fh_black_10);}
-
 table tr:hover {background-color: var(--fh_black_25);}
+
 
 table th {
   padding-top: 12px;
@@ -46,6 +64,7 @@ a:link, a:visited {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-radius: 4px;
 }
 
 a:hover, a:active {

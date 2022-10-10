@@ -34,8 +34,14 @@
            <th>Kommunikation</th>
        </tr>
        {% for device in devices %}
-       <tr>
-           <td>{{ device.id }}</td>
+            {% if device.automatic_import %}
+                <tr id="marked_orange">
+            {% elif device.csv_import%}
+                <tr id="marked_yellow">
+            {% else %}
+                <tr>
+            {% endif %}
+           <td>{{ device.id }} </td>
            <td>{{ device.device_name }}</td>
            <td>{{ device.product_id.product_supplier_id.name }}</td>
            <td>{{ device.product_id.model }}</td>
