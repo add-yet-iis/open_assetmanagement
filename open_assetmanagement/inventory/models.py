@@ -27,8 +27,12 @@ class Product(models.Model):
 
 class Device(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    device_name = models.CharField(max_length=255, blank=True)
+    device_name = models.CharField(max_length=255, blank=True, unique=True)
     serial_number = models.CharField(max_length=255, blank=True)
+    mac_address = models.CharField(max_length=255, default="", blank=True)
+    ip_address = models.GenericIPAddressField(default="0.0.0.0", blank=True, null=True)
+    automatic_import = models.BooleanField(default=False)
+    csv_import = models.BooleanField(default=False)
     group = models.CharField(max_length=255, blank=True)
     network = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
@@ -42,14 +46,14 @@ class Device(models.Model):
         return self.device_name
 
     class CommunicationCapability(models.TextChoices):
-        NOCOMMUNICATION = 'NO', _('No communication')
+        NO_COMMUNICATION = 'NO', _('No communication')
         LOCAL = 'LO', _('Local communication only')
         EXTERNAL = 'EX', _('External Communication')
 
     communication_capability = models.CharField(
         max_length=2,
         choices=CommunicationCapability.choices,
-        default=CommunicationCapability.NOCOMMUNICATION,
+        default=CommunicationCapability.NO_COMMUNICATION,
         blank=True,
     )
 
