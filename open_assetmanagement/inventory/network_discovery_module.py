@@ -77,16 +77,21 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
     nm = nmap.PortScanner()
     discovered = {}
     try:
-        nm.scan(hosts=scanning_range, arguments='-sV -O')
+        nm.scan(hosts=scanning_range, arguments='-sV -O -e eth0')
         print("SUDO POWER !")
         for host in nm.all_hosts():
             entry = {
+                "name": "",
                 "os": "",
                 "supplier": "",
                 "mac": "",
                 "ports": ""
             }
             ssh_info = ""
+            try:
+                entry['name'] = nm[host]['hostnames'][0]['name']
+            except:
+                pass
             try:
                 ssh_info = nm[host]['tcp'][22]['version'].split(" ")[1]
             except:
