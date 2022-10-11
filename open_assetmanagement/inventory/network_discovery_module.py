@@ -49,7 +49,6 @@ def crackmapexec(scanning_range):
             "smb_v1": os_info[4]
         }
         discovered.update({ip_and_name[0]: entry})
-    print(discovered)
     return discovered
 
 
@@ -68,7 +67,11 @@ def nmap_discovery(scanning_range):
             }
             ssh_info = ""
             try:
-                entry['os'] = nm[host]['osmatch'][0]['name'] + " " + nm[host]['osmatch'][0]['accuracy'] + "%"
+                ssh_info = nm[host]['tcp'][22]['version'].split(" ")[1]
+            except:
+                pass
+            try:
+                entry['os'] = ssh_info + nm[host]['osmatch'][0]['name'] + " " + nm[host]['osmatch'][0]['accuracy'] + "%"
             except:
                 pass
             try:
@@ -76,11 +79,7 @@ def nmap_discovery(scanning_range):
             except:
                 pass
             try:
-                ssh_info = nm[host]['tcp'][22]['version'].split(" ")[1]
-            except:
-                pass
-            try:
-                entry['supplier'] = ssh_info + nm[host]['vendor'][entry['mac']]
+                entry['supplier'] = nm[host]['vendor'][entry['mac']]
             except:
                 pass
             try:
@@ -100,13 +99,14 @@ def nmap_discovery(scanning_range):
             }
             ssh_info = ""
             try:
-                entry['supplier'] = nm[host]['tcp'][22]['version'].split(" ")[1]
+                entry['os'] = nm[host]['tcp'][22]['version'].split(" ")[1]
             except:
                 pass
             discovered.update({host: entry})
     return discovered
 
 
+# This function converts the used Dict Format to csv
 def dict_to_csv(dict_data):
     a_file = open("network_discovery.csv", "w")
 
@@ -118,20 +118,47 @@ def dict_to_csv(dict_data):
     return a_file
 
 
-def network_discovery(scan_range):
-    # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended)
-    # data_nmap = nmap_discovery(scan_range)
+# This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
+def data_combine(data_cme, data_nmap):
+    print(data_cme)
+    print(data_nmap)
+    for host in data_cme:
+        # Search every IP from the CME Data in the NMAP Data
+        try:
+            # Found -> Update Host. But not the os name for Linux, because its wrong... samba
+            if not "Linux" in data_nmap[host]['os']:
+                data_nmap[host]['os'] = data_cme[host]['os']
+            data_nmap[host]['name'] = data_cme[host]['name']
+            data_nmap[host].update({'domain': data_cme[host]['domain']})
+            data_nmap[host].update({'smb_signing': data_cme[host]['smb_signing']})
+            data_nmap[host].update({'smb_v1': data_cme[host]['smb_v1']})
+        except KeyError:
+            # Not found -> Add host to data.
+            data_nmap.update({host: data_cme[host]})
+    print(data_nmap)
+    return data_nmap
 
-    # Accurate OS Info from SMB Scan (Windows only)
+
+# This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by the
+# filehandler. It is an example of a module to expand the asset management DB and Webapp
+def network_discovery(scan_range):
+    # could be oneliner:
+    # return dict_to_csv(data_combine(crackmapexec(scan_range), nmap_discovery(scan_range)))
+
+    # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended) and return a Dict
+    data_nmap = nmap_discovery(scan_range)
+
+    # Accurate OS Info from SMB Scan (Windows only) returned as Dict
     data_cme = crackmapexec(scan_range)
 
     # Add the CME Data to the Nmap Data
-    # data = data_combine(data_cme, data_nmap)
+    data = data_combine(data_cme, data_nmap)
 
     # Convert found Data to csv
-    #data_csv = dict_to_csv(data)
+    data_csv = dict_to_csv(data)
+
     # Return csv to be imported by the filehandler into database
-    #return data_csv
+    return data_csv
 
 
 network_discovery(RANGE)
