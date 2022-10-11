@@ -2,3 +2,5 @@ Django==4.1.1
 python-magic==0.4.27
 python-nmap
 pandas
+sphinx
+sphinx_rtd_theme

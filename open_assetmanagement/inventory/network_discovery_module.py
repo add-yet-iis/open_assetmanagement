@@ -1,3 +1,12 @@
+"""
+network_discovery_module
+
+This module is an example for a module that could extend the assetmanagement tool
+It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
+in the form of a csv file
+
+"""
+
 # from .models import Device, Product, ProductSupplier
 # import filehandler
 import csv
@@ -13,29 +22,34 @@ CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
 # def initial_netdiscover():
 #    os.system('netdiscover -r ' + RANGE + '> nd_out.txt')
 #    # os.system('rm nd_out.txt')
-
-# Format of CME Discoveries
-# discovered = {
-#     "ip": {
-#         "os": "os",
-#         "supplier": "supplier",
-#         "mac": "mac",
-#         "ports": "ports"
-#     }
-# }
-
-# Format of NMAP Discoveries
-# discovered = {
-#     "ip": {
-#         "os": "os",
-#         "supplier": "supplier",
-#         "mac": "mac",
-#         "ports": "ports"
-#     }
-# }
+#Format of NMAP Discoveries
+#discovered = {
+#    "ip": {
+#        "os": "os",
+#        "supplier": "supplier",
+#        "mac": "mac",
+#        "ports": "ports"
+#    }
+#}
+#Format of CME Discoveries
+#discovered = {
+#    "ip": {
+#        "os": "os",
+#        "supplier": "supplier",
+#        "mac": "mac",
+#        "ports": "ports"
+#    }
+#}
 
 
-def crackmapexec(scanning_range):
+def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
+    """
+    Discovers Assets with the command-line-tool crackmapexec and returns them in a Dict
+
+    :param scanning_range: str IP Range of Network to be scanned
+    :return: Discovered Data
+    :rtype: dict[str, dict[str, str]]
+    """
     discovered = {}
     for line in subprocess.check_output('crackmapexec smb ' + scanning_range, shell=True).decode("utf-8").splitlines():
         line = line.strip(CME_SMB).split(CME_STAR)
@@ -52,7 +66,14 @@ def crackmapexec(scanning_range):
     return discovered
 
 
-def nmap_discovery(scanning_range):
+def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
+    """
+    Discovers Assets with the command-line-tool nmap and returns them in a Dict
+
+    :param scanning_range: str IP Range of Network to be scanned
+    :return: Discovered Data
+    :rtype: dict[str, dict[str, str]]
+    """
     nm = nmap.PortScanner()
     discovered = {}
     try:
@@ -106,8 +127,13 @@ def nmap_discovery(scanning_range):
     return discovered
 
 
-# This function converts the used Dict Format to csv
-def dict_to_csv(dict_data):
+def dict_to_csv(dict_data: object) -> object:
+    """
+    This function converts the used Dict Format to csv
+
+    :return: CSV File containing data
+    :type dict_data: object
+    """
     a_file = open("network_discovery.csv", "w")
 
     writer = csv.writer(a_file)
@@ -118,10 +144,14 @@ def dict_to_csv(dict_data):
     return a_file
 
 
-# This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
-def data_combine(data_cme, data_nmap):
-    print(data_cme)
-    print(data_nmap)
+def data_combine(data_cme: object, data_nmap: object) -> object:
+    """
+    This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
+
+    :param data_cme: CME data output by the cme function
+    :param data_nmap: Nmap data output by the nmap function
+    :return: Data from the nmap scan combined with the additional data from cme
+    """
     for host in data_cme:
         # Search every IP from the CME Data in the NMAP Data
         try:
@@ -135,13 +165,17 @@ def data_combine(data_cme, data_nmap):
         except KeyError:
             # Not found -> Add host to data.
             data_nmap.update({host: data_cme[host]})
-    print(data_nmap)
     return data_nmap
 
 
-# This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by the
-# filehandler. It is an example of a module to expand the asset management DB and Webapp
-def network_discovery(scan_range):
+def network_discovery(scan_range: str) -> object:
+    """
+    This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
+    the filehandler. It is an example of a module to expand the asset management DB and Webapp
+
+    :param scan_range: str IP Range of Network to be scanned
+    :return: CSV to be handled
+    """
     # could be oneliner:
     # return dict_to_csv(data_combine(crackmapexec(scan_range), nmap_discovery(scan_range)))
 

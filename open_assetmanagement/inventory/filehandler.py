@@ -5,6 +5,14 @@ from .models import Device, Product, ProductSupplier
 
 
 def handle_uploaded_file(f):
+    """
+    Handle the uploaded csv or Excel file.
+    If it's a csv send directly to csv_to_device else convert to csv first.
+
+    :param f: Uploaded File.
+    :type f: Bytestream
+
+    """
     d_loc = 'inventory/tmp/'
     print(f.name)
     if "csv" in str.lower(f.name):
@@ -27,7 +35,15 @@ def handle_uploaded_file(f):
         os.remove(path_to_csv)
 
 
-def csv_to_device(filename, delimiter):
+def csv_to_device(filename, delimiter=','):
+    """
+    This function adds data from the given csv file to the database
+
+    :param filename: The filename of the csv to be imported
+    :type filename: str
+    :param delimiter: The seperator of the csv file. The default is ','
+    :type delimiter: char
+    """
     with open(filename, encoding="utf8", errors="ignore") as f:
         reader = csv.DictReader(f, delimiter=delimiter)
         for row in reader:
@@ -49,8 +65,9 @@ def csv_to_device(filename, delimiter):
                 model=product_model,
                 version=row['version'],
                 type=row['type'],
-                endOfSupport=row['eos'],
             )
+            if 'eos' in row and not row['eos'] == "":
+                endOfSupport=row['eos']
             device, exists = Device.objects.update_or_create(
                 device_name=row['name'],
                 defaults={
@@ -62,6 +79,16 @@ def csv_to_device(filename, delimiter):
 
 
 def xlsx_to_csv(d_loc, d_name, d_name_csv):
+    """
+    This function converts an Excel file to a csv file using the module pandas
+
+    :param d_loc: The directory where the file is located
+    :type d_loc: str
+    :param d_name: The filename of the xlsx file to be converted
+    :type d_name: str
+    :param d_name_csv: The filename of the csv file to be created
+    :type d_name: str
+    """
     try:
         read_file = pandas.read_excel(d_loc + d_name)
         read_file.to_csv(d_loc + d_name_csv, index = None, header=True)
@@ -71,5 +98,15 @@ def xlsx_to_csv(d_loc, d_name, d_name_csv):
 
 
 def csv_to_xlsx(d_loc, d_name, d_name_xlsx):
+    """
+    This function converts a csv file to an Excel file (.xlsx) using the module pandas
+
+    :param d_loc: The directory where the file is located
+    :type d_loc: str
+    :param d_name: The filename of the csv file to be converted
+    :type d_name: str
+    :param d_name_xlsx: The filename of the xlsx file to be created
+    :type d_name: str
+    """
     read_file = pandas.read_csv(d_loc + d_name)
     read_file.to_excel(d_loc + d_name_xlsx, index=None, header=True)
