@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
 
 <div>
-    <form action="/upload/" enctype="multipart/form-data" method="post">
+    <form action="" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">

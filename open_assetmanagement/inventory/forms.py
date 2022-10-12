@@ -1,7 +1,20 @@
 import magic
 from django import forms
+from .models import Device, Product
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+
+
+class DeviceForm(forms.ModelForm):
+    class Meta:
+        model = Device
+        exclude = []
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        exclude = []
 
 
 class UploadFileForm(forms.Form):

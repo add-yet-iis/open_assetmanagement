@@ -13,7 +13,7 @@ import csv
 import nmap
 import subprocess
 
-RANGE = "10.0.0.0/24"
+RANGE = "10.0.0.1"
 CME_SMB = "\x1b[1m\x1b[34mSMB\x1b[0m"
 CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
 # WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
@@ -77,7 +77,8 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
     nm = nmap.PortScanner()
     discovered = {}
     try:
-        nm.scan(hosts=scanning_range, arguments='-sV -O -e eth0')
+        nm.scan(hosts=scanning_range, arguments='-sV -O', sudo=True)
+
         print("SUDO POWER !")
         for host in nm.all_hosts():
             entry = {
@@ -115,20 +116,6 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
             discovered.update({host: entry})
     except:
         print("No root!")
-        nm.scan(scanning_range)
-        for host in nm.all_hosts():
-            entry = {
-                "os": "",
-                "supplier": "",
-                "mac": "",
-                "ports": ""
-            }
-            ssh_info = ""
-            try:
-                entry['os'] = nm[host]['tcp'][22]['version'].split(" ")[1]
-            except:
-                pass
-            discovered.update({host: entry})
     return discovered
 
 

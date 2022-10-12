@@ -4,6 +4,8 @@ from . import views
 
 app_name = 'inventory'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
+    path('', views.index, name='index'),
     path('upload/', views.upload_file, name='upload_file'),
+    path('device/<int:pk>', views.device, name='device'),
+    path('product/<int:pk>', views.product, name='product'),
 ]

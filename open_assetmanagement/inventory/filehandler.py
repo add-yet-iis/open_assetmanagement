@@ -13,7 +13,7 @@ def handle_uploaded_file(f):
     :type f: Bytestream
 
     """
-    d_loc = 'inventory/tmp/'
+    d_loc = '/tmp/'
     print(f.name)
     if "csv" in str.lower(f.name):
         d_name = 'import.csv'

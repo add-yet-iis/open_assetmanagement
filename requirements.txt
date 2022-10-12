@@ -4,3 +4,5 @@ python-nmap
 pandas
 sphinx
 sphinx_rtd_theme
+django_filter
+django_tables2
