@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from django.forms.models import model_to_dict
 
 
 class ProductSupplier(models.Model):
@@ -31,6 +32,7 @@ class Device(models.Model):
     serial_number = models.CharField(max_length=255, blank=True)
     mac_address = models.CharField(max_length=255, default="", blank=True)
     ip_address = models.GenericIPAddressField(default="0.0.0.0", blank=True, null=True)
+    os = models.CharField(max_length=255, blank=True)
     automatic_import = models.BooleanField(default=False)
     csv_import = models.BooleanField(default=False)
     group = models.CharField(max_length=255, blank=True)
@@ -44,6 +46,12 @@ class Device(models.Model):
 
     def __str__(self):
         return self.device_name
+
+    def values(self):
+        return model_to_dict(self, fields=[field.name for field in self._meta.fields]).values()
+
+    def keys(self):
+        return model_to_dict(self, fields=[field.name for field in self._meta.fields]).keys()
 
     class CommunicationCapability(models.TextChoices):
         NO_COMMUNICATION = 'NO', _('No communication')

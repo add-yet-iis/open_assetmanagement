@@ -1,8 +1,12 @@
-Django==4.1.1
-python-magic==0.4.27
+Django
+python-magic
 python-nmap
 pandas
 sphinx
 sphinx_rtd_theme
 django_filter
 django_tables2
+tablib
+tablib[xlsx]
+django-crispy-forms
+crispy-bootstrap5

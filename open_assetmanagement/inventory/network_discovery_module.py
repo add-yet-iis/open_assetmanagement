@@ -13,7 +13,7 @@ import csv
 import nmap
 import subprocess
 
-RANGE = "10.0.0.1"
+RANGE = "10.0.0.0/24"
 CME_SMB = "\x1b[1m\x1b[34mSMB\x1b[0m"
 CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
 # WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
@@ -80,6 +80,7 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
         nm.scan(hosts=scanning_range, arguments='-sV -O', sudo=True)
 
         print("SUDO POWER !")
+        print(nm.all_hosts())
         for host in nm.all_hosts():
             entry = {
                 "name": "",
@@ -126,14 +127,16 @@ def dict_to_csv(dict_data: object) -> object:
     :return: CSV File containing data
     :type dict_data: object
     """
-    a_file = open("network_discovery.csv", "w")
+    filename = "network_discovery.csv"
+    a_file = open(filename, "w")
 
     writer = csv.writer(a_file)
+    writer.writerow(["ip", "name", "os", "supplier", "mac", "auto", "additional"])
     for key, value in dict_data.items():
-        writer.writerow([key, value])
+        writer.writerow([key, value["name"], value["os"], value["supplier"], value["mac"], "True", value])
 
     a_file.close()
-    return a_file
+    return filename
 
 
 def data_combine(data_cme: object, data_nmap: object) -> object:
@@ -170,7 +173,7 @@ def network_discovery(scan_range: str) -> object:
     """
     # could be oneliner:
     # return dict_to_csv(data_combine(crackmapexec(scan_range), nmap_discovery(scan_range)))
-
+    print(scan_range)
     # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended) and return a Dict
     data_nmap = nmap_discovery(scan_range)
 
@@ -185,6 +188,3 @@ def network_discovery(scan_range: str) -> object:
 
     # Return csv to be imported by the filehandler into database
     return data_csv
-
-
-network_discovery(RANGE)

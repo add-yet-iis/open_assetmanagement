@@ -1,6 +1,6 @@
 import magic
 from django import forms
-from .models import Device, Product
+from .models import Device, Product, ProductSupplier
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -15,6 +15,16 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = []
+
+
+class SupplierForm(forms.ModelForm):
+    class Meta:
+        model = ProductSupplier
+        exclude = []
+
+
+class NetworkdiscoveryForm(forms.Form):
+    ip_range = forms.CharField()
 
 
 class UploadFileForm(forms.Form):

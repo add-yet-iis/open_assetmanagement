@@ -60,22 +60,44 @@ def csv_to_device(filename, delimiter=','):
                 product_model = row['model']
             except KeyError:
                 product_model = "Unbekannt"
+            try:
+                version = row['version']
+            except KeyError:
+                version = ""
+            try:
+                type = row['type']
+            except KeyError:
+                type = ""
             product, exists = Product.objects.get_or_create(
                 product_supplier_id=supplier,
                 model=product_model,
-                version=row['version'],
-                type=row['type'],
+                version=version,
+                type=type,
             )
             if 'eos' in row and not row['eos'] == "":
-                endOfSupport=row['eos']
+                product.endOfSupport=row['eos']
+            product.save()
+            try:
+                serial = row['serial_number']
+            except KeyError:
+                serial = ""
             device, exists = Device.objects.update_or_create(
                 device_name=row['name'],
                 defaults={
                     'product_id': product,
-                    'serial_number': row['serial_number'],
+                    'serial_number': serial,
                     'csv_import': True,
                 },
             )
+            if 'os' in row and not row['os'] == "":
+                device.os = row['os']
+            if 'auto' in row:
+                device.automatic_import = True
+            if 'mac' in row and not row['mac'] == "":
+                device.mac_address = row['mac']
+            if 'ip' in row and not row['ip'] == "":
+                device.ip_address = row['ip']
+            device.save()
 
 
 def xlsx_to_csv(d_loc, d_name, d_name_csv):
