@@ -1,0 +1,118 @@
+{% extends 'inventory/main.html' %}
+
+{% block content %}
+
+{%  include 'inventory/status.html' %}
+
+<div class="row p-3">
+    <div class="col-md-6">
+        <h5>Products</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="">Create Product</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Supplier</th>
+                    <th>Model</th>
+                    <th>Version</th>
+                    <th>Type</th>
+                    <th>EoS</th>
+                </tr>
+
+                {% for product in products %}
+                <tr>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'inventory:product' product.id %}">View</a></td>
+                    <td>{{product.product_supplier_id}}</td>
+                    <td>{{product.model}}</td>
+                    <td>{{product.version}}</td>
+                    <td>{{product.type}}</td>
+                    <td>{{product.endOfSupport}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h5>Suppliers</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="">Create Supplier</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>name</th>
+                    <th>Contact Info</th>
+                    <th>Aquisition History</th>
+                    <th>Support Contracts</th>
+                    <th>Additional Info</th>
+                </tr>
+
+                {% for supplier in suppliers %}
+                <tr>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'inventory:supplier' supplier.id %}">View</a></td>
+                    <td>{{supplier.name}}</td>
+                    <td>{{supplier.contact_information}}</td>
+                    <td>{{supplier.acquisitionHistory}}</td>
+                    <td>{{supplier.supportContracts}}</td>
+                    <td>{{supplier.additionalInformation}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-md-8">
+        <h5>Devices</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="">Create Device</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Serial Number</th>
+                    <th>MAC</th>
+                    <th>IP</th>
+                    <th>OS</th>
+                    <th>Group</th>
+                    <th>Network</th>
+                    <th>Location</th>
+                </tr>
+
+                {% for device in devices %}
+                <tr>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'inventory:device' device.id %}">View</a></td>
+                    <td>{{device.device_name}}</td>
+                    <td>{{device.serial_number}}</td>
+                    <td>{{device.mac_address}}</td>
+                    <td>{{device.ip_address}}</td>
+                    <td>{{device.os}}</td>
+                    <td>{{device.group}}</td>
+                    <td>{{device.network}}</td>
+                    <td>{{device.location}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <h5>Software</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="">Create Software</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Software</th>
+                    <th>Test</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

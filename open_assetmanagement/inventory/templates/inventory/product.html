@@ -1,0 +1,86 @@
+{%  extends 'inventory/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row p-3">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Product: {{ product.model }} {{ product.version }}</h5>
+			<hr>
+
+			<p>Model: {{ product.model }}</p>
+			<p>Version: {{ product.version }}</p>
+			<p>Type: {{ product.type }}</p>
+			<p>EndOfSupport: {{ product.endOfSupport }}</p>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Product</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Product</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Supplier: {{ product.product_supplier_id }}</h5>
+			<hr>
+			<p>Name: {{ product.product_supplier_id.name }}</p>
+			<p>Contact Info: {{ product.product_supplier_id.contact_information }}</p>
+			<p>Acquisition History: {{ product.product_supplier_id.acquisitionHistory }}</p>
+			<p>Support Contracts: {{ product.product_supplier_id.supportContracts }}</p>
+			<p>Additional Info: {{ product.product_supplier_id.additionalInformation }}</p>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Supplier</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Supplier</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Info</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div>
+</div>
+
+</div>
+<br>
+
+<div class="row p-3">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Devices with this Product</h5>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Serial Number</th>
+					<th>MAC</th>
+					<th>IP</th>
+					<th>OS</th>
+					<th>Group</th>
+					<th>Network</th>
+					<th>Location</th>
+				</tr>
+
+				{% for device in devices %}
+				<tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'inventory:device' device.id %}">View</a></td>
+					<td>{{device.device_name}}</td>
+					<td>{{device.serial_number}}</td>
+					<td>{{device.mac_address}}</td>
+					<td>{{device.ip_address}}</td>
+					<td>{{device.os}}</td>
+					<td>{{device.group}}</td>
+					<td>{{device.network}}</td>
+					<td>{{device.location}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

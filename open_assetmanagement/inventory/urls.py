@@ -5,6 +5,12 @@ from . import views
 app_name = 'inventory'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+
+    path('register/', views.register_page, name='register'),
+    path('login/', views.login_page, name="login"),
+    path('logout/', views.logout_user, name="logout"),
+
 
     path('upload/', views.upload_file, name='upload_file'),
     path('download/', views.download_file, name='download'),

@@ -97,6 +97,10 @@ def csv_to_device(filename, delimiter=','):
                 device.mac_address = row['mac']
             if 'ip' in row and not row['ip'] == "":
                 device.ip_address = row['ip']
+            if 'network' in row and not row['network'] == "":
+                device.network = row['network']
+            if 'group' in row and not row['group'] == "":
+                device.group = row['group']
             device.save()
 
 

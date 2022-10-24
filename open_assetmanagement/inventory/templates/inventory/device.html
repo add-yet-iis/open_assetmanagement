@@ -23,9 +23,10 @@
                             {% csrf_token %}
                             {{ form|crispy }}
                             <div class="pe-2">
-                                <a class="btn btn-primary shadow" href="{{ pk }}/delete">Delete</a>
+                                <a class="btn btn-danger shadow" href="{{ pk }}/delete">Delete</a>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+
                         </form>
                     </div>
                 </div>

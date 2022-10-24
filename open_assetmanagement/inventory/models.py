@@ -67,8 +67,8 @@ class Device(models.Model):
 
 
 class Software(models.Model):
-    product_supplier_id = models.ForeignKey(ProductSupplier, on_delete=models.CASCADE)
-    device_id = models.ForeignKey(Device, on_delete=models.CASCADE)
+    product_supplier_id = models.ForeignKey(ProductSupplier, null=True, on_delete=models.SET_NULL)
+    devices = models.ManyToManyField(Device)
     software_name = models.CharField(max_length=255)
     software_version = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length=255, blank=True)

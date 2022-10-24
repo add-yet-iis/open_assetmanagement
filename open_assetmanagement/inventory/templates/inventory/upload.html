@@ -1,5 +1,6 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'inventory/style.css' %}">
+{% extends 'inventory/main.html' %}
+
+{% block content %}
 
 <div>
     <form action="/upload/" enctype="multipart/form-data" method="post">
@@ -8,3 +9,5 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+
+{% endblock %}

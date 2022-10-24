@@ -1,0 +1,63 @@
+{%  extends 'inventory/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row p-3">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Supplier: {{ supplier }}</h5>
+			<hr>
+			<p>Name: {{ supplier.name }}</p>
+			<p>Contact Info: {{ supplier.contact_information }}</p>
+			<p>Acquisition History: {{ supplier.acquisitionHistory }}</p>
+			<p>Support Contracts: {{ supplier.supportContracts }}</p>
+			<p>Additional Info: {{ supplier.additionalInformation }}</p>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Supplier</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Supplier</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Info</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div>
+</div>
+
+</div>
+<br>
+
+<div class="row p-3">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Products of this Supplier</h5>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Model</th>
+					<th>Version</th>
+					<th>Type</th>
+					<th>EoS</th>
+				</tr>
+
+				{% for product in products %}
+				<tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'inventory:product' product.id %}">View</a></td>
+					<td>{{product.model}}</td>
+					<td>{{product.version}}</td>
+					<td>{{product.type}}</td>
+					<td>{{product.endOfSupport}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

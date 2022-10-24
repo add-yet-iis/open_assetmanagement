@@ -1,6 +1,13 @@
 import django_tables2 as tables
-from .models import Device
+from .models import *
 from django_tables2.utils import Accessor  # alias for Accessor
+
+
+class ProductTable(tables.Table):
+    class Meta:
+        model = Product
+        exclude = ()
+        DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 
 class DeviceTable(tables.Table):

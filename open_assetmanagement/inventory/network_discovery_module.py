@@ -60,7 +60,8 @@ def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
             "name": ip_and_name[2],
             "domain": os_info[2],
             "smb_signing": os_info[3],
-            "smb_v1": os_info[4]
+            "smb_v1": os_info[4],
+            "network": scanning_range
         }
         discovered.update({ip_and_name[0]: entry})
     return discovered
@@ -87,7 +88,9 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
                 "os": "",
                 "supplier": "",
                 "mac": "",
-                "ports": ""
+                "ports": "",
+                "network": scanning_range,
+                "domain": "",
             }
             ssh_info = ""
             try:
@@ -131,9 +134,10 @@ def dict_to_csv(dict_data: object) -> object:
     a_file = open(filename, "w")
 
     writer = csv.writer(a_file)
-    writer.writerow(["ip", "name", "os", "supplier", "mac", "auto", "additional"])
+    writer.writerow(["ip", "name", "os", "supplier", "mac", "auto", "network", "group", "additional"])
     for key, value in dict_data.items():
-        writer.writerow([key, value["name"], value["os"], value["supplier"], value["mac"], "True", value])
+        writer.writerow([key, value["name"], value["os"], value["supplier"], value["mac"], "True", value["network"],
+                         value["domain"], value])
 
     a_file.close()
     return filename
@@ -188,3 +192,6 @@ def network_discovery(scan_range: str) -> object:
 
     # Return csv to be imported by the filehandler into database
     return data_csv
+
+
+#Erst Netdiscover -> Passiv Scannen und dann eventuell aggresivere Scans Mittels nmap
