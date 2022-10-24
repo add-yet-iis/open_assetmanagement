@@ -96,6 +96,8 @@
             </div>
             <div class="modal-body">
                 <div>
+                    <h5>Networkdiscovery Module</h5>
+                    <hr>
                     <form action="/networkscan/" enctype="multipart/form-data" method="post">
                         {% load crispy_forms_tags %}
                         {% csrf_token %}
@@ -103,7 +105,6 @@
                         <input type="submit" value="Submit">
                     </form>
                     {% csrf_token %}
-                    <a class="btn btn-primary shadow" href="{% url 'inventory:netscan' %}">Network_discovery_module.py</a>
                 </div>
             </div>
             <div class="modal-footer">

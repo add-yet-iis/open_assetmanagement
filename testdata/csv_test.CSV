@@ -1,4 +1,12 @@
-supplier;model;version;type;eos;name;serial_number
-HP;Super300;v 2.1;Laptop;2000-12-01;Test123;dfgfdgdfgsdfgsdf
-;Super400;v 1;JUHU;2012-12-12;Test12345;dfgfdgsdgfgsgsdfgsdfg
-Test;Super400;v 1;Ahhhh;2012-12-12;Test;changed
+supplier,model,version,type,eos,name,serial_number,mac,ip,group,os
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-01,PC-20,5CG830469X,B0-4F-13-EF-04-71,10.0.0.20,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-02,PC-21,6CG830469X,B0-4F-13-EF-04-72,10.0.0.21,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-03,PC-22,7CG830469X,B0-4F-13-EF-04-73,10.0.0.22,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-04,PC-23,8CG830469X,B0-4F-13-EF-04-74,10.0.0.23,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-05,PC-24,9CG830469X,B0-4F-13-EF-04-75,10.0.0.24,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-06,PC-25,10CG830469X,B0-4F-13-EF-04-76,10.0.0.25,Consultant-Laptops,Windows 11
+HP Inc.,Elitebook x360,HSN-IO4C,Laptop,2025-01-07,PC-26,11CG830469X,B0-4F-13-EF-04-77,10.0.0.26,Consultant-Laptops,Windows 11
+Siemens,Simatec S7-1500,1512C-1 PN,PLC,2045-03-01,PLC-30,S C-X4U421302009,20-A8-B9-A0-00-12,10.0.0.30,Manufacturing-Line 1,
+Siemens,Simatec S7-1500,1512C-1 PN,PLC,2045-03-02,PLC-31,S C-X4U421302010,20-A8-B9-A0-00-13,10.0.0.31,Manufacturing-Line 1,
+Siemens,Simatec S7-1500,1512C-1 PN,PLC,2045-03-03,PLC-32,S C-X4U421302011,20-A8-B9-A0-00-14,10.0.0.32,Manufacturing-Line 1,
+Siemens,Simatec S7-300,315-2 DP,PLC,2010-10-10,PLC-41,S C-D7U425502012,D4-F5-27-FF-10-25,10.0.0.41,Manufacturing-Line 2,

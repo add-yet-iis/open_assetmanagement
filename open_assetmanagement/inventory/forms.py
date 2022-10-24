@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms.widgets import Select
 
 
 class CreateUserForm(UserCreationForm):
@@ -33,19 +34,25 @@ class SupplierForm(forms.ModelForm):
 
 class NetworkdiscoveryForm(forms.Form):
     ip_range = forms.CharField()
+    type = forms.ChoiceField(
+        choices=[
+            ('0', 'Careful - Only passive Arp Scan (Netdiscover)'),
+            ("1", "Medium - NMAP TSCP-SYN Scan"),
+            ("2", "Full - NMAP OS Scan, NSE Scripts, CME Scan and Full Port Scans"),
+        ]
+    )
 
 
 class UploadFileForm(forms.Form):
     #title = forms.CharField(max_length=50)
     file = forms.FileField()
-    #FILE_TYPES = [
-    #    ('XLSX', 'Excel'),
-    #    ('CSV', 'CSV'),
-    #    ('XML', 'XML'),
-    #]
-    #file_type = forms.ChoiceField(
-    #    choices=FILE_TYPES,
-    #)
+    delimiter = forms.ChoiceField(
+        choices=[
+            (',', 'Unknown - Or Exel File'),
+            (";", "Semicolon ';'"),
+            (",", "Comma ','"),
+        ]
+    )
 
     def clean_title(self):
         data = self.cleaned_data['title']

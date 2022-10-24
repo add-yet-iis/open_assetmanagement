@@ -4,11 +4,12 @@ import pandas
 from .models import Device, Product, ProductSupplier
 
 
-def handle_uploaded_file(f):
+def handle_uploaded_file(f, delimiter=','):
     """
     Handle the uploaded csv or Excel file.
     If it's a csv send directly to csv_to_device else convert to csv first.
 
+    :param delimiter: Defines the Delimiting Character of the CSV-File
     :param f: Uploaded File.
     :type f: Bytestream
 
@@ -25,12 +26,11 @@ def handle_uploaded_file(f):
         for chunk in f.chunks():
             destination.write(chunk)
     if is_csv:
-        csv_to_device(d_loc + d_name, ";")
+        csv_to_device(d_loc + d_name, ",")
         os.remove(d_loc + d_name)
     else:
         path_to_csv = xlsx_to_csv(d_loc, d_name, 'import.csv')
-        print(path_to_csv)
-        csv_to_device(path_to_csv, ",")
+        csv_to_device(path_to_csv, delimiter)
         os.remove(d_loc + d_name)
         os.remove(path_to_csv)
 
@@ -38,7 +38,8 @@ def handle_uploaded_file(f):
 def csv_to_device(filename, delimiter=','):
     """
     This function adds data from the given csv file to the database
-
+    The accepted column-names are:
+    supplier, model, version, type, eos, serial_number, name, os, auto, mac, ip, network, group
     :param filename: The filename of the csv to be imported
     :type filename: str
     :param delimiter: The seperator of the csv file. The default is ','
@@ -47,27 +48,29 @@ def csv_to_device(filename, delimiter=','):
     with open(filename, encoding="utf8", errors="ignore") as f:
         reader = csv.DictReader(f, delimiter=delimiter)
         for row in reader:
-            try:
+
+            # First we create the supplier, or pass the unknown supplier if the row supplier is not found
+            if 'supplier' in row and not row['supplier'] == "":
                 sup_name = row['supplier']
-                if sup_name == "":
-                    sup_name = "Unbekannt"
-            except KeyError:
-                sup_name = "Unbekannt"
+            else:
+                sup_name = "Unknown"
             supplier, exists = ProductSupplier.objects.get_or_create(
                     name=sup_name,
             )
-            try:
+
+            # Now we create the Product using the supplier and the rows model, version, type and eos
+            if 'model' in row and not row['model'] == "":
                 product_model = row['model']
-            except KeyError:
-                product_model = "Unbekannt"
-            try:
+            else:
+                product_model = "Unknown"
+            if 'version' in row and not row['version'] == "":
                 version = row['version']
-            except KeyError:
-                version = ""
-            try:
+            else:
+                version = "Unknown"
+            if 'type' in row and not row['type'] == "":
                 type = row['type']
-            except KeyError:
-                type = ""
+            else:
+                type = "Unknown"
             product, exists = Product.objects.get_or_create(
                 product_supplier_id=supplier,
                 model=product_model,
@@ -75,20 +78,29 @@ def csv_to_device(filename, delimiter=','):
                 type=type,
             )
             if 'eos' in row and not row['eos'] == "":
-                product.endOfSupport=row['eos']
+                product.endOfSupport = row['eos']
             product.save()
-            try:
+
+            # Finally we create the Device using the columns serial_number, name, os, auto, mac, ip, network, group
+            if 'serial_number' in row and not row['serial_number'] == "":
                 serial = row['serial_number']
-            except KeyError:
+            else:
                 serial = ""
+            if 'name' in row and not row['name'] == "":
+                name = row['name']
+            else:
+                name = "Excel-Import-"
+
             device, exists = Device.objects.update_or_create(
-                device_name=row['name'],
+                device_name=name,
                 defaults={
                     'product_id': product,
                     'serial_number': serial,
                     'csv_import': True,
                 },
             )
+            if name in "Excel-Import-":
+                device.device_name= "Excel-Import0" + device.pk
             if 'os' in row and not row['os'] == "":
                 device.os = row['os']
             if 'auto' in row:

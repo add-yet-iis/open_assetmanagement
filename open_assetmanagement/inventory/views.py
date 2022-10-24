@@ -126,7 +126,7 @@ def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file'])
+            handle_uploaded_file(request.FILES['file'], request.POST.get("delimiter"))
             return HttpResponseRedirect(reverse('inventory:index'))
     else:
         form = UploadFileForm()
