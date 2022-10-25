@@ -36,9 +36,10 @@ class NetworkdiscoveryForm(forms.Form):
     ip_range = forms.CharField()
     type = forms.ChoiceField(
         choices=[
-            ('0', 'Careful - Only passive Arp Scan (Netdiscover)'),
-            ("1", "Medium - NMAP TSCP-SYN Scan"),
-            ("2", "Full - NMAP OS Scan, NSE Scripts, CME Scan and Full Port Scans"),
+            (0, 'Very Careful - Only passive Arp Scan (Netdiscover)'),
+            (1, 'Careful - Only active Arp Scan (Netdiscover)'),
+            (2, "Medium - NMAP TCP-SYN Scan"),
+            (3, "Full - NMAP OS Scan, NSE Scripts, CME Scan and Full Port Scans"),
         ]
     )
 

@@ -17,11 +17,14 @@ body{
 	background-color: #ebeff5;
 }
 #total-devices{
-	background-color: #4cb4c7;
+	background-color: var(--fh_green_std);
 }
 #total-products{
-	background-color: #7abecc;
+	background-color: var(--fh_green_50);
 }
 #total-suppliers{
-	background-color: #7CD1C0;
+	background-color: var(--fh_green_75);
+}
+#total-software{
+	background-color: var(--fh_black_75);
 }

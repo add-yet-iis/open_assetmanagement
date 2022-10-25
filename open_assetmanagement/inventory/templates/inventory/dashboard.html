@@ -18,6 +18,7 @@
                     <th>Version</th>
                     <th>Type</th>
                     <th>EoS</th>
+                    <th></th>
                 </tr>
 
                 {% for product in products %}
@@ -28,6 +29,7 @@
                     <td>{{product.version}}</td>
                     <td>{{product.type}}</td>
                     <td>{{product.endOfSupport}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'inventory:delete_product' product.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -47,6 +49,7 @@
                     <th>Aquisition History</th>
                     <th>Support Contracts</th>
                     <th>Additional Info</th>
+                    <th></th>
                 </tr>
 
                 {% for supplier in suppliers %}
@@ -57,6 +60,7 @@
                     <td>{{supplier.acquisitionHistory}}</td>
                     <td>{{supplier.supportContracts}}</td>
                     <td>{{supplier.additionalInformation}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'inventory:delete_supplier' supplier.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -80,6 +84,7 @@
                     <th>Group</th>
                     <th>Network</th>
                     <th>Location</th>
+                    <th></th>
                 </tr>
 
                 {% for device in devices %}
@@ -93,6 +98,7 @@
                     <td>{{device.group}}</td>
                     <td>{{device.network}}</td>
                     <td>{{device.location}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'inventory:delete_device' device.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -109,6 +115,7 @@
                     <th></th>
                     <th>Software</th>
                     <th>Test</th>
+
                 </tr>
             </table>
         </div>

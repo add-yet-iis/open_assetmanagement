@@ -12,34 +12,54 @@ in the form of a csv file
 import csv
 import nmap
 import subprocess
+import os
+import pandas as pd
 
 RANGE = "10.0.0.0/24"
 CME_SMB = "\x1b[1m\x1b[34mSMB\x1b[0m"
 CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
+INTERFACE = "eth1"
 # WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
 
-# ------ This is probably not useful and will be skipped
-# def initial_netdiscover():
-#    os.system('netdiscover -r ' + RANGE + '> nd_out.txt')
-#    # os.system('rm nd_out.txt')
-#Format of NMAP Discoveries
+#Format of Discoveries
 #discovered = {
 #    "ip": {
-#        "os": "os",
-#        "supplier": "supplier",
-#        "mac": "mac",
-#        "ports": "ports"
-#    }
+#       "name": "",
+#       "os": "",
+#       "supplier": "",
+#       "mac": "",
+#       "ports": "",
+#       "network": scanning_range,
+#       "domain": "",
+# }
 #}
-#Format of CME Discoveries
-#discovered = {
-#    "ip": {
-#        "os": "os",
-#        "supplier": "supplier",
-#        "mac": "mac",
-#        "ports": "ports"
-#    }
-#}
+
+
+def initial_netdiscover(scan_range: str, active=False):
+    """ This function performs an ARP Scan via the command-line tool netdiscover and returns the data as a dictionary
+
+    :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8, /16 and /24 only
+    :param active: Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff
+    :return:
+    """
+    discovered = {}
+    expr = "sudo netdiscover -r " + scan_range + " -i " + INTERFACE + " -PN"
+    if not active:
+        expr = expr + 'p'
+    for line in subprocess.check_output(expr, shell=True).decode("utf-8").splitlines():
+        line = line.split(maxsplit=4)
+        if not line:
+            return discovered
+        discovered.update({
+            line[0]: {
+                "supplier": line[4],
+                "mac": line[1],
+                "auto": True,
+                "name": line[0] + "-NameUnknown",
+                "network": scan_range
+            }
+        })
+    return discovered
 
 
 def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
@@ -67,21 +87,24 @@ def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
     return discovered
 
 
-def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
+def nmap_discovery(scanning_range: str, discovered={}, syn=False) -> dict[str, dict[str, str]]:
     """
     Discovers Assets with the command-line-tool nmap and returns them in a Dict
 
+    :param discovered: Already discovered hosts
+    :param syn: Use Syn Scan
     :param scanning_range: str IP Range of Network to be scanned
     :return: Discovered Data
     :rtype: dict[str, dict[str, str]]
     """
     nm = nmap.PortScanner()
-    discovered = {}
+    discovered = discovered
     try:
-        nm.scan(hosts=scanning_range, arguments='-sV -O', sudo=True)
+        if syn:
+            nm.scan(hosts=scanning_range, arguments='', sudo=True)
+        else:
+            nm.scan(hosts=scanning_range, arguments='-sV -O', sudo=True)
 
-        print("SUDO POWER !")
-        print(nm.all_hosts())
         for host in nm.all_hosts():
             entry = {
                 "name": "",
@@ -89,14 +112,17 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
                 "supplier": "",
                 "mac": "",
                 "ports": "",
+                "auto": True,
                 "network": scanning_range,
                 "domain": "",
             }
             ssh_info = ""
             try:
                 entry['name'] = nm[host]['hostnames'][0]['name']
+                if not entry['name']:
+                    entry['name'] = host + "-NameUnknown"
             except:
-                pass
+                entry['name'] = host + "-NameUnknown"
             try:
                 ssh_info = nm[host]['tcp'][22]['version'].split(" ")[1]
             except:
@@ -123,26 +149,6 @@ def nmap_discovery(scanning_range: str) -> dict[str, dict[str, str]]:
     return discovered
 
 
-def dict_to_csv(dict_data: object) -> object:
-    """
-    This function converts the used Dict Format to csv
-
-    :return: CSV File containing data
-    :type dict_data: object
-    """
-    filename = "network_discovery.csv"
-    a_file = open(filename, "w")
-
-    writer = csv.writer(a_file)
-    writer.writerow(["ip", "name", "os", "supplier", "mac", "auto", "network", "group", "additional"])
-    for key, value in dict_data.items():
-        writer.writerow([key, value["name"], value["os"], value["supplier"], value["mac"], "True", value["network"],
-                         value["domain"], value])
-
-    a_file.close()
-    return filename
-
-
 def data_combine(data_cme: object, data_nmap: object) -> object:
     """
     This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
@@ -167,31 +173,34 @@ def data_combine(data_cme: object, data_nmap: object) -> object:
     return data_nmap
 
 
-def network_discovery(scan_range: str) -> object:
+def network_discovery(scan_range: str, level: int) -> object:
     """
     This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
     the filehandler. It is an example of a module to expand the asset management DB and Webapp
 
+    :param level: Scanning Intensity. 0 - passive Netdiscover, 1 - SYN Scan, 2 - OS Scan
     :param scan_range: str IP Range of Network to be scanned
     :return: CSV to be handled
     """
-    # could be oneliner:
-    # return dict_to_csv(data_combine(crackmapexec(scan_range), nmap_discovery(scan_range)))
-    print(scan_range)
-    # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended) and return a Dict
-    data_nmap = nmap_discovery(scan_range)
 
-    # Accurate OS Info from SMB Scan (Windows only) returned as Dict
-    data_cme = crackmapexec(scan_range)
+    # Level (very) Careful = Netdiscover Scan! Needs Sudo Privileges
+    data = initial_netdiscover(scan_range, bool(level))
+    if level == 3:
+        # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended) and return a Dict
+        data_nmap = nmap_discovery(scan_range, data)
 
-    # Add the CME Data to the Nmap Data
-    data = data_combine(data_cme, data_nmap)
+        # Accurate OS Info from SMB Scan (Windows only) returned as Dict
+        data_cme = crackmapexec(scan_range)
+
+        # Add the CME Data to the Nmap Data
+        data = data_combine(data_cme, data_nmap)
+    elif level == 2:
+        # Level 2 Medium - SYN Scan
+        data = nmap_discovery(scan_range, data, True)
 
     # Convert found Data to csv
-    data_csv = dict_to_csv(data)
+    pd.DataFrame(data).T.reset_index(names="ip").to_csv('network_discovery.csv', index=False)
 
-    # Return csv to be imported by the filehandler into database
-    return data_csv
+    # Return csv filename to be imported by the filehandler into database
+    return 'network_discovery.csv'
 
-
-#Erst Netdiscover -> Passiv Scannen und dann eventuell aggresivere Scans Mittels nmap

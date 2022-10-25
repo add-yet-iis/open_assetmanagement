@@ -15,7 +15,6 @@ def handle_uploaded_file(f, delimiter=','):
 
     """
     d_loc = '/tmp/'
-    print(f.name)
     if "csv" in str.lower(f.name):
         d_name = 'import.csv'
         is_csv = True
@@ -26,7 +25,7 @@ def handle_uploaded_file(f, delimiter=','):
         for chunk in f.chunks():
             destination.write(chunk)
     if is_csv:
-        csv_to_device(d_loc + d_name, ",")
+        csv_to_device(d_loc + d_name, delimiter)
         os.remove(d_loc + d_name)
     else:
         path_to_csv = xlsx_to_csv(d_loc, d_name, 'import.csv')
@@ -89,7 +88,7 @@ def csv_to_device(filename, delimiter=','):
             if 'name' in row and not row['name'] == "":
                 name = row['name']
             else:
-                name = "Excel-Import-"
+                name = "Auto-Import-"
 
             device, exists = Device.objects.update_or_create(
                 device_name=name,
@@ -99,8 +98,8 @@ def csv_to_device(filename, delimiter=','):
                     'csv_import': True,
                 },
             )
-            if name in "Excel-Import-":
-                device.device_name= "Excel-Import0" + device.pk
+            if name in "Auto-Import-":
+                device.device_name= "Auto-Import-0" + str(device.pk)
             if 'os' in row and not row['os'] == "":
                 device.os = row['os']
             if 'auto' in row:
@@ -113,6 +112,8 @@ def csv_to_device(filename, delimiter=','):
                 device.network = row['network']
             if 'group' in row and not row['group'] == "":
                 device.group = row['group']
+            if 'ports' in row and not row['ports'] == "":
+                device.configuration_file = row['ports']
             device.save()
 
 

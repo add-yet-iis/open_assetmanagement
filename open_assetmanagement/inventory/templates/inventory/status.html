@@ -1,6 +1,13 @@
 <br>
 
 <div class="row p-3">
+    <div class="col-md-auto">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <a class="btn btn-primary shadow" href="{% url 'inventory:download' %}">Daten exportieren</a>
+                <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#data_import">Daten importieren</button>
+            </div>
+    </div>
+
     <div class="col">
         <div class="col-md">
             <div class="card text-center text-white  mb-3" id="total-devices">
@@ -36,6 +43,43 @@
                 <div class="card-body">
                     <h3 class="card-title">{{total_suppliers}}</h3>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3" id="total-software">
+                <div class="card-header">
+                    <h5 class="card-title">Total Software</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_software}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="data_import" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Daten importieren</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form action="/upload/" enctype="multipart/form-data" method="post">
+                        {% load crispy_forms_tags %}
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

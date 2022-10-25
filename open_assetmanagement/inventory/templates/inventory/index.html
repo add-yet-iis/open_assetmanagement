@@ -14,17 +14,9 @@
                         </form>
                     </div>
                     <div class="pe-2">
-                        <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#data_import">
-                            Daten importieren
-                        </button>
-                    </div>
-                    <div class="pe-2">
                         <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#data_export">
                             Daten herunterladen
                         </button>
-                    </div>
-                    <div class="pe-2">
-                        <a class="btn btn-primary shadow" href="{% url 'inventory:download' %}">Daten exportieren</a>
                     </div>
                     <div class="pe-2">
                         <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#modules">
@@ -38,29 +30,6 @@
                         {% render_table table "inventory/table.html" %}
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="data_import" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Daten importieren</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form action="/upload/" enctype="multipart/form-data" method="post">
-                        {% load crispy_forms_tags %}
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
