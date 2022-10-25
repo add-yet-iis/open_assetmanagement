@@ -14,8 +14,8 @@
 			<p>Acquisition History: {{ supplier.acquisitionHistory }}</p>
 			<p>Support Contracts: {{ supplier.supportContracts }}</p>
 			<p>Additional Info: {{ supplier.additionalInformation }}</p>
-			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Supplier</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Supplier</a>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_supplier' supplier.pk %}">Update Supplier</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_supplier' supplier.pk %}">Delete Supplier</a>
 
 		</div>
 	</div>

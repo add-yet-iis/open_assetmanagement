@@ -161,45 +161,58 @@ def download_file(request):
 @login_required(login_url='inventory:login')
 def device(request, pk):
     device = Device.objects.get(pk=pk)
-    context = {}
-    context["pk"] = pk
+    context = {"pk": pk, "device": device}
+    return render(request, 'inventory/device.html', context)
+
+@login_required(login_url='inventory:login')
+def change_device(request, pk):
+    device = Device.objects.get(pk=pk)
     if request.method == "POST":
-        context["form"] = DeviceForm(request.POST, instance=device)
+        form = DeviceForm(request.POST, instance=device)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+    form = DeviceForm(instance=device)
+    context = {"form": form}
+    return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def product(request, pk):
+    product = Product.objects.get(pk=pk)
+    devices = Device.objects.all().filter(product_id=pk)
+    context = {"pk": pk, "product": product, "devices": devices}
+    return render(request, 'inventory/product.html', context)
+
+@login_required(login_url='inventory:login')
+def change_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {"product": product}
+    if request.method == "POST":
+        context["form"] = ProductForm(request.POST, instance=product)
         if context["form"].is_valid():
             context["form"].save()
             messages.success(request, 'Changes successful!')
             return HttpResponseRedirect(reverse('inventory:dashboard'))
         else:
             messages.error(request, 'Error saving form')
-
-    context["form"] = DeviceForm(instance=device)
-    return render(request, 'inventory/device.html', context)
-
-
-@login_required(login_url='inventory:login')
-def product(request, pk):
-    product = Product.objects.get(pk=pk)
-    #devices = Device.objects.get(product_id=product)
-    devices = Device.objects.all().filter(product_id=pk)
-    context = {}
-    context["pk"] = pk
-    context["product"] = product
-    context["devices"] = devices
-    if request.method == "POST":
-        context["form"] = ProductForm(request.POST, instance=product)
-        if context["form"].is_valid():
-            context["form"].save()
-            messages.success(request, 'Changes successful!')
-            return HttpResponseRedirect(reverse('inventory:index'))
-        else:
-            messages.error(request, 'Error saving form')
-
     context["form"] = ProductForm(instance=product)
-    return render(request, 'inventory/product.html', context)
+
+    return render(request, 'inventory/form.html', context)
 
 
 @login_required(login_url='inventory:login')
 def supplier(request, pk):
+    supplier = ProductSupplier.objects.get(pk=pk)
+    context = {"pk": pk, "supplier": supplier, "products": Product.objects.all().filter(product_supplier_id=pk)}
+    return render(request, 'inventory/supplier.html', context)
+
+
+@login_required(login_url='inventory:login')
+def change_supplier(request, pk):
     supplier = ProductSupplier.objects.get(pk=pk)
     context = {}
     context["pk"] = pk
@@ -215,4 +228,5 @@ def supplier(request, pk):
             messages.error(request, 'Error saving form')
 
     context["form"] = SupplierForm(instance=supplier)
-    return render(request, 'inventory/supplier.html', context)
+    return render(request, 'inventory/form.html', context)
+

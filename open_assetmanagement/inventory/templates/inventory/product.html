@@ -14,8 +14,8 @@
 			<p>Version: {{ product.version }}</p>
 			<p>Type: {{ product.type }}</p>
 			<p>EndOfSupport: {{ product.endOfSupport }}</p>
-			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Product</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Product</a>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_product' product.pk %}">Update Product</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_product' product.pk %}">Delete Product</a>
 
 		</div>
 	</div>
@@ -29,8 +29,8 @@
 			<p>Acquisition History: {{ product.product_supplier_id.acquisitionHistory }}</p>
 			<p>Support Contracts: {{ product.product_supplier_id.supportContracts }}</p>
 			<p>Additional Info: {{ product.product_supplier_id.additionalInformation }}</p>
-			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="">Update Supplier</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Supplier</a>
+			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_supplier' product.product_supplier_id.pk %}">Update Supplier</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_supplier' product.product_supplier_id.pk %}">Delete Supplier</a>
 
 		</div>
 	</div>
