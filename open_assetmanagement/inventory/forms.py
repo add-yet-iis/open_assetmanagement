@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms.widgets import Select
 
 
 class CreateUserForm(UserCreationForm):
@@ -51,7 +50,7 @@ class NetworkdiscoveryForm(forms.Form):
 
 
 class UploadFileForm(forms.Form):
-    #title = forms.CharField(max_length=50)
+    # title = forms.CharField(max_length=50)
     file = forms.FileField()
     delimiter = forms.ChoiceField(
         choices=[
@@ -70,9 +69,9 @@ class UploadFileForm(forms.Form):
         return data
 
     def clean_file(self):
-        d_type = self.cleaned_data.get('file_type')
         file = self.cleaned_data.get("file", False)
         filetype = magic.from_buffer(file.read())
-        if not "text" in filetype and not "Microsoft Excel" in filetype:
-            raise ValidationError("Filetype ist wrong, you tried uploading: '" + filetype + "' but shoud have uploaded: CSV or XLSX")
+        if "text" not in filetype and "Microsoft Excel" not in filetype:
+            raise ValidationError("Filetype ist wrong, you tried uploading: '" + filetype + "' but should have "
+                                                                                            "uploaded: CSV or XLSX")
         return file

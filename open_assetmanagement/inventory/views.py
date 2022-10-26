@@ -1,12 +1,13 @@
 from .models import Device, Product, ProductSupplier, Software
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
-from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, NetworkdiscoveryForm, CreateUserForm, SoftwareForm
+from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, NetworkdiscoveryForm, CreateUserForm, \
+    SoftwareForm
 from .filehandler import handle_uploaded_file, csv_to_device
 from django.urls import reverse
 from .tables import DeviceTable, ProductTable
 from .filters import DeviceFilter
-from django_tables2 import SingleTableView, RequestConfig
+from django_tables2 import RequestConfig
 from django_tables2.export.export import TableExport
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -63,7 +64,7 @@ def login_page(request):
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
-            password =request.POST.get('password')
+            password = request.POST.get('password')
 
             user = authenticate(request, username=username, password=password)
 
@@ -114,6 +115,7 @@ def network_scan(request):
     ip_range = str(request.POST.get("ip_range"))
     csv_to_device(network_discovery(ip_range, int(request.POST.get("type"))))
     return HttpResponseRedirect(reverse('inventory:index'))
+
 
 @login_required(login_url='inventory:login')
 def download_file(request):
@@ -173,6 +175,7 @@ def create_device(request):
     form = DeviceForm()
     context = {"form": form}
     return render(request, 'inventory/form.html', context)
+
 
 @login_required(login_url='inventory:login')
 def delete_device(request, pk):

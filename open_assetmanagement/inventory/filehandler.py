@@ -100,7 +100,7 @@ def csv_to_device(filename, delimiter=','):
                 },
             )
             if name in "Auto-Import-":
-                device.device_name= "Auto-Import-0" + str(device.pk)
+                device.device_name = "Auto-Import-0" + str(device.pk)
             if 'os' in row and not row['os'] == "":
                 device.os = row['os']
             if 'auto' in row:
@@ -140,7 +140,7 @@ def xlsx_to_csv(d_loc, d_name, d_name_csv):
     """
     try:
         read_file = pandas.read_excel(d_loc + d_name)
-        read_file.to_csv(d_loc + d_name_csv, index = None, header=True)
+        read_file.to_csv(d_loc + d_name_csv, index=None, header=True)
     except:
         pass
     return d_loc+d_name_csv

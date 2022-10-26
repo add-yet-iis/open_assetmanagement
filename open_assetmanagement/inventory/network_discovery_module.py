@@ -1,18 +1,14 @@
 """
 network_discovery_module
 
-This module is an example for a module that could extend the assetmanagement tool
+This module is an example for a module that could extend the asset-management tool
 It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
 in the form of a csv file
 
 """
 
-# from .models import Device, Product, ProductSupplier
-# import filehandler
-import csv
 import nmap
 import subprocess
-import os
 import pandas as pd
 
 RANGE = "10.0.0.0/24"
@@ -21,8 +17,8 @@ CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
 INTERFACE = "eth1"
 # WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
 
-#Format of Discoveries
-#discovered = {
+# Format of Discoveries
+# discovered = {
 #    "ip": {
 #       "name": "",
 #       "os": "",
@@ -32,13 +28,14 @@ INTERFACE = "eth1"
 #       "network": scanning_range,
 #       "domain": "",
 # }
-#}
+# }
 
 
 def initial_netdiscover(scan_range: str, active=False):
     """ This function performs an ARP Scan via the command-line tool netdiscover and returns the data as a dictionary
 
-    :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8, /16 and /24 only
+    :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,
+    /16 and /24 only
     :param active: Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff
     :return:
     """
@@ -87,7 +84,7 @@ def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
     return discovered
 
 
-def nmap_discovery(scanning_range: str, discovered={}, syn=False) -> dict[str, dict[str, str]]:
+def nmap_discovery(scanning_range: str, discovered=None, syn=False) -> dict[str, dict[str, str]]:
     """
     Discovers Assets with the command-line-tool nmap and returns them in a Dict
 
@@ -97,6 +94,8 @@ def nmap_discovery(scanning_range: str, discovered={}, syn=False) -> dict[str, d
     :return: Discovered Data
     :rtype: dict[str, dict[str, str]]
     """
+    if discovered is None:
+        discovered = {}
     nm = nmap.PortScanner()
     discovered = discovered
     try:
@@ -167,7 +166,7 @@ def nmap_discovery(scanning_range: str, discovered={}, syn=False) -> dict[str, d
     return discovered
 
 
-def data_combine(data_cme: object, data_nmap: object) -> object:
+def data_combine(data_cme: dict, data_nmap: dict) -> object:
     """
     This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
 
@@ -179,7 +178,7 @@ def data_combine(data_cme: object, data_nmap: object) -> object:
         # Search every IP from the CME Data in the NMAP Data
         try:
             # Found -> Update Host. But not the os name for Linux, because its wrong... samba
-            if not "Linux" in data_nmap[host]['os']:
+            if "Linux" not in data_nmap[host]['os']:
                 data_nmap[host]['os'] = data_cme[host]['os']
             data_nmap[host]['name'] = data_cme[host]['name']
             data_nmap[host].update({'domain': data_cme[host]['domain']})
@@ -191,7 +190,7 @@ def data_combine(data_cme: object, data_nmap: object) -> object:
     return data_nmap
 
 
-def network_discovery(scan_range: str, level: int) -> object:
+def network_discovery(scan_range: str, level: int) -> str:
     """
     This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
     the filehandler. It is an example of a module to expand the asset management DB and Webapp
@@ -217,8 +216,8 @@ def network_discovery(scan_range: str, level: int) -> object:
         data = nmap_discovery(scan_range, data, True)
 
     # Convert found Data to csv
+    # noinspection PyArgumentList
     pd.DataFrame(data).T.reset_index(names="ip").to_csv('network_discovery.csv', index=False)
 
     # Return csv filename to be imported by the filehandler into database
     return 'network_discovery.csv'
-

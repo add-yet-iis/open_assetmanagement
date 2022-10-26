@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django.forms.models import model_to_dict
 
@@ -12,7 +11,7 @@ class ProductSupplier(models.Model):
     additionalInformation = models.TextField(blank=True, null=True)
 
     def __str__(self):
-            return self.name
+        return self.name
 
 
 class Product(models.Model):
@@ -24,6 +23,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.model
+
 
 class Device(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
