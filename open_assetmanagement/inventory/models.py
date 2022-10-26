@@ -25,7 +25,6 @@ class Product(models.Model):
     def __str__(self):
         return self.model
 
-
 class Device(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     device_name = models.CharField(max_length=255, blank=True, unique=True)

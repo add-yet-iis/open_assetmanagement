@@ -1,6 +1,6 @@
 import magic
 from django import forms
-from .models import Device, Product, ProductSupplier
+from .models import Device, Product, ProductSupplier, Software
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
@@ -29,6 +29,12 @@ class ProductForm(forms.ModelForm):
 class SupplierForm(forms.ModelForm):
     class Meta:
         model = ProductSupplier
+        exclude = []
+
+
+class SoftwareForm(forms.ModelForm):
+    class Meta:
+        model = Software
         exclude = []
 
 

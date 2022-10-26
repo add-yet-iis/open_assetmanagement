@@ -1,7 +1,7 @@
 from .models import Device, Product, ProductSupplier, Software
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
-from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, NetworkdiscoveryForm, CreateUserForm
+from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, NetworkdiscoveryForm, CreateUserForm, SoftwareForm
 from .filehandler import handle_uploaded_file, csv_to_device
 from django.urls import reverse
 from .tables import DeviceTable, ProductTable
@@ -20,7 +20,7 @@ def dashboard(request):
     devices = Device.objects.all()
     products = Product.objects.all()
     suppliers = ProductSupplier.objects.all()
-    software = Software.objects.all()
+    softwares = Software.objects.all()
     product_table = ProductTable(products)
     RequestConfig(request, paginate={"per_page": 8}).configure(product_table)
     form = UploadFileForm()
@@ -28,11 +28,11 @@ def dashboard(request):
         'devices': devices,
         'products': products,
         'suppliers': suppliers,
-        'software': software,
+        'softwares': softwares,
         'total_devices': devices.count(),
         'total_products': products.count(),
         'total_suppliers': suppliers.count(),
-        'total_software': software.count(),
+        'total_software': softwares.count(),
         'product_table': product_table,
         'form': form,
     }
@@ -89,7 +89,7 @@ def index(request):
     context['filter'] = DeviceFilter(request.GET, queryset=devices)
     export_format = request.GET.get("_export", None)
     context['table'] = DeviceTable(context['filter'].qs)
-    RequestConfig(request, paginate={"per_page": 8}).configure(context['table'])
+    RequestConfig(request, paginate={"per_page": 10}).configure(context['table'])
     if TableExport.is_valid_format(export_format):
         exporter = TableExport(export_format, context['table'])
         return exporter.response("assets".format(export_format))
@@ -115,28 +115,6 @@ def network_scan(request):
     csv_to_device(network_discovery(ip_range, int(request.POST.get("type"))))
     return HttpResponseRedirect(reverse('inventory:index'))
 
-
-@login_required(login_url='inventory:login')
-def delete_device(request, pk):
-    device = Device.objects.get(pk=pk)
-    device.delete()
-    return HttpResponseRedirect(reverse('inventory:dashboard'))
-
-
-@login_required(login_url='inventory:login')
-def delete_supplier(request, pk):
-    supplier = ProductSupplier.objects.get(pk=pk)
-    supplier.delete()
-    return HttpResponseRedirect(reverse('inventory:dashboard'))
-
-
-@login_required(login_url='inventory:login')
-def delete_product(request, pk):
-    product = Product.objects.get(pk=pk)
-    product.delete()
-    return HttpResponseRedirect(reverse('inventory:dashboard'))
-
-
 @login_required(login_url='inventory:login')
 def download_file(request):
     # Create the HttpResponse object with the appropriate CSV header.
@@ -161,8 +139,10 @@ def download_file(request):
 @login_required(login_url='inventory:login')
 def device(request, pk):
     device = Device.objects.get(pk=pk)
-    context = {"pk": pk, "device": device}
+    softwares = device.software_set.all()
+    context = {"pk": pk, "device": device, "softwares": softwares}
     return render(request, 'inventory/device.html', context)
+
 
 @login_required(login_url='inventory:login')
 def change_device(request, pk):
@@ -181,11 +161,33 @@ def change_device(request, pk):
 
 
 @login_required(login_url='inventory:login')
+def create_device(request):
+    if request.method == "POST":
+        form = DeviceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+    form = DeviceForm()
+    context = {"form": form}
+    return render(request, 'inventory/form.html', context)
+
+@login_required(login_url='inventory:login')
+def delete_device(request, pk):
+    device = Device.objects.get(pk=pk)
+    device.delete()
+    return HttpResponseRedirect(reverse('inventory:dashboard'))
+
+
+@login_required(login_url='inventory:login')
 def product(request, pk):
     product = Product.objects.get(pk=pk)
     devices = Device.objects.all().filter(product_id=pk)
     context = {"pk": pk, "product": product, "devices": devices}
     return render(request, 'inventory/product.html', context)
+
 
 @login_required(login_url='inventory:login')
 def change_product(request, pk):
@@ -205,9 +207,37 @@ def change_product(request, pk):
 
 
 @login_required(login_url='inventory:login')
+def create_product(request):
+    context = {}
+    if request.method == "POST":
+        context["form"] = ProductForm(request.POST)
+        if context["form"].is_valid():
+            context["form"].save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+    context["form"] = ProductForm()
+
+    return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def delete_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    product.delete()
+    return HttpResponseRedirect(reverse('inventory:dashboard'))
+
+
+@login_required(login_url='inventory:login')
 def supplier(request, pk):
     supplier = ProductSupplier.objects.get(pk=pk)
-    context = {"pk": pk, "supplier": supplier, "products": Product.objects.all().filter(product_supplier_id=pk)}
+    context = {
+        "pk": pk,
+        "supplier": supplier,
+        "products": Product.objects.all().filter(product_supplier_id=pk),
+        "softwares": Software.objects.all().filter(product_supplier_id=pk)
+    }
     return render(request, 'inventory/supplier.html', context)
 
 
@@ -229,4 +259,82 @@ def change_supplier(request, pk):
 
     context["form"] = SupplierForm(instance=supplier)
     return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def create_supplier(request):
+    context = {}
+    if request.method == "POST":
+        context["form"] = SupplierForm(request.POST)
+        if context["form"].is_valid():
+            context["form"].save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+
+    context["form"] = SupplierForm()
+    return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def delete_supplier(request, pk):
+    supplier = ProductSupplier.objects.get(pk=pk)
+    supplier.delete()
+    return HttpResponseRedirect(reverse('inventory:dashboard'))
+
+
+@login_required(login_url='inventory:login')
+def software(request, pk):
+    software = Software.objects.get(pk=pk)
+    devices = software.devices.all()
+    context = {
+        "pk": pk,
+        "software": software,
+        "devices": devices,
+    }
+    return render(request, 'inventory/software.html', context)
+
+
+@login_required(login_url='inventory:login')
+def change_software(request, pk):
+    software = Software.objects.get(pk=pk)
+    context = {}
+    context["pk"] = pk
+    context["software"] = software
+
+    if request.method == "POST":
+        context["form"] = SoftwareForm(request.POST, instance=software)
+        if context["form"].is_valid():
+            context["form"].save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+
+    context["form"] = SoftwareForm(instance=software)
+    return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def create_software(request):
+    context = {}
+    if request.method == "POST":
+        context["form"] = SoftwareForm(request.POST)
+        if context["form"].is_valid():
+            context["form"].save()
+            messages.success(request, 'Changes successful!')
+            return HttpResponseRedirect(reverse('inventory:dashboard'))
+        else:
+            messages.error(request, 'Error saving form')
+
+    context["form"] = SoftwareForm()
+    return render(request, 'inventory/form.html', context)
+
+
+@login_required(login_url='inventory:login')
+def delete_software(request, pk):
+    software = Software.objects.get(pk=pk)
+    software.delete()
+    return HttpResponseRedirect(reverse('inventory:dashboard'))
 

@@ -29,9 +29,12 @@
 			<p>Acquisition History: {{ product.product_supplier_id.acquisitionHistory }}</p>
 			<p>Support Contracts: {{ product.product_supplier_id.supportContracts }}</p>
 			<p>Additional Info: {{ product.product_supplier_id.additionalInformation }}</p>
-			<a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_supplier' product.product_supplier_id.pk %}">Update Supplier</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_supplier' product.product_supplier_id.pk %}">Delete Supplier</a>
-
+			{% if supplier %}
+			<a class="btn btn-outline-info btn-sm btn-block mb-2" href="{% url 'inventory:change_supplier' product.product_supplier_id.pk %}">Update Supplier</a>
+			<a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'inventory:delete_supplier' product.product_supplier_id.pk %}">Delete Supplier</a>
+			{% else %}
+			<a class="btn btn-outline-info btn-sm btn-block" href="{% url 'inventory:create_supplier' %}">Create Supplier</a>
+			{% endif %}
 		</div>
 	</div>
 

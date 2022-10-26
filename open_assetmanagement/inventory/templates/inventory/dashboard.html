@@ -9,7 +9,7 @@
         <h5>Products</h5>
         <hr>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="">Create Product</a>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'inventory:create_product' %}">Create Product</a>
             <table class="table table-sm">
                 <tr>
                     <th></th>
@@ -40,7 +40,7 @@
         <h5>Suppliers</h5>
         <hr>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="">Create Supplier</a>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'inventory:create_supplier' %}">Create Supplier</a>
             <table class="table table-sm">
                 <tr>
                     <th></th>
@@ -72,7 +72,7 @@
         <h5>Devices</h5>
         <hr>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="">Create Device</a>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'inventory:create_device' %}">Create Device</a>
             <table class="table table-sm">
                 <tr>
                     <th></th>
@@ -109,13 +109,24 @@
         <h5>Software</h5>
         <hr>
         <div class="card card-body">
-            <a class="btn btn-primary btn-sm btn-block" href="">Create Software</a>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'inventory:create_software' %}">Create Software</a>
             <table class="table table-sm">
                 <tr>
                     <th></th>
-                    <th>Software</th>
-                    <th>Test</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>EoS</th>
+                    <th></th>
                 </tr>
+                {% for software in softwares %}
+                <tr>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'inventory:software' software.id %}">View</a></td>
+                    <td>{{software.software_name}}</td>
+                    <td>{{software.software_category}}</td>
+                    <td>{{software.software_endOfSupport}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'inventory:delete_software' software.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
             </table>
         </div>
     </div>

@@ -40,8 +40,16 @@
             <p>Version: {{ device.product_id.version }}</p>
             <p>Type: {{ device.product_id.type }}</p>
             <p>EndOfSupport: {{ device.product_id.endOfSupport }}</p>
-            <a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_product' device.product_id.pk %}">Update Product</a>
-            <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_product' device.product_id.pk %}">Delete Product</a>
+
+            {% if device.product_id %}
+            <div class="d-flex">
+                <a class="btn flex-fill btn-outline-info  btn-sm btn-block me-1" href="{% url 'inventory:product' device.product_id.pk %}">View Product</a>
+                <a class="btn flex-fill btn-outline-info  btn-sm btn-block me-1" href="{% url 'inventory:change_product' device.product_id.pk %}">Update Product</a>
+                <a class="btn flex-fill btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_product' device.product_id.pk %}">Delete Product</a>
+            </div>
+            {% else %}
+                <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'inventory:create_product' %}">Create Product</a>
+            {% endif %}
 
         </div>
     </div>
@@ -55,10 +63,36 @@
             <p>Acquisition History: {{ device.product_id.product_supplier_id.acquisitionHistory }}</p>
             <p>Support Contracts: {{ device.product_id.product_supplier_id.supportContracts }}</p>
             <p>Additional Info: {{ device.product_id.product_supplier_id.additionalInformation }}</p>
-            <a class="btn btn-outline-info  btn-sm btn-block mb-2" href="{% url 'inventory:change_supplier' device.product_id.product_supplier_id.pk %}">Update Supplier</a>
-            <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_supplier' device.product_id.product_supplier_id.pk %}">Delete Supplier</a>
 
+            {% if device.product_id.product_supplier_id %}
+            <div class="d-flex">
+                <a class="btn flex-fill btn-outline-info  btn-sm btn-block me-1" href="{% url 'inventory:supplier' device.product_id.product_supplier_id.pk %}">View Supplier</a>
+                <a class="btn flex-fill btn-outline-info  btn-sm btn-block me-1" href="{% url 'inventory:change_supplier' device.product_id.product_supplier_id.pk %}">Update Supplier</a>
+                <a class="btn flex-fill btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_supplier' device.product_id.product_supplier_id.pk %}">Delete Supplier</a>
+            </div>
+            {% else %}
+                <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'inventory:create_supplier' %}">Create Supplier</a>
+            {% endif %}
         </div>
+    </div>
+</div>
+<div class="row p-3 pt-0">
+    <div class="card card-body">
+        <h5>Installed Software</h5>
+        <hr>
+        <table class="table table-sm">
+            <tr>
+                <th></th>
+                <th>Name</th>
+            </tr>
+
+            {% for software in softwares %}
+            <tr>
+                <td><a class="btn btn-sm btn-info" href="{% url 'inventory:software' software.id %}">View</a></td>
+                <td>{{software.software_name}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 </div>
 <br>

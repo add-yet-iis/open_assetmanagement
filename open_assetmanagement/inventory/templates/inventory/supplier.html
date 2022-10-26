@@ -33,6 +33,7 @@
 <br>
 
 <div class="row p-3">
+	{% if products %}
 	<div class="col-md">
 		<div class="card card-body">
 			<h5>Products of this Supplier</h5>
@@ -58,6 +59,34 @@
 			</table>
 		</div>
 	</div>
+	{% endif %}
+	{% if softwares %}
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Software of this Supplier</h5>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Model</th>
+					<th>Version</th>
+					<th>Type</th>
+					<th>EoS</th>
+				</tr>
+
+				{% for software in softwares %}
+				<tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'inventory:software' software.id %}">View</a></td>
+					<td>{{software.software_name}}</td>
+					<td>{{software.software_version}}</td>
+					<td>{{software.category}}</td>
+					<td>{{software.endOfSupport}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	{% endif %}
 </div>
 
 {% endblock %}

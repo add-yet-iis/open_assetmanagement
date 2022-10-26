@@ -9,7 +9,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{% url 'inventory:dashboard'%}">
             <img src="{% static 'images/house-fill.svg' %}">
             Home
         </a>
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/">Dashboard</a>
+                    <a class="nav-link" href="{% url 'inventory:index'%}">Table</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/">Admin</a>

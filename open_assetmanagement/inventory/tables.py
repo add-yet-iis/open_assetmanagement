@@ -14,24 +14,25 @@ class DeviceTable(tables.Table):
     device_name = tables.LinkColumn("inventory:device", text=lambda device: device.device_name, args=[Accessor("pk")])
     product = tables.LinkColumn("inventory:product", text=lambda device: device.product_id, args=[Accessor("product_id.pk")], order_by="product_id.model")
     supplier = tables.LinkColumn("inventory:supplier", text=lambda device: device.product_id.product_supplier_id, args=[Accessor("product_id.product_supplier_id.pk")], order_by="product_id.product_supplier_id.name")
-    product_id__version = tables.Column(verbose_name="Version")
-    product_id__type = tables.Column(verbose_name="Typ")
-    #type = models.CharField(max_length=255, blank=True)
-    #endOfSupport = models.DateField(blank=True, null=True)
+    product_id__version = tables.Column(verbose_name="Version", default="")
+    product_id__type = tables.Column(verbose_name="Typ", default="")
+    # type = models.CharField(max_length=255, blank=True)
+    # endOfSupport = models.DateField(blank=True, null=True)
     id = tables.Column(visible=False)
     csv_import = tables.Column(visible=False)
     automatic_import = tables.Column(visible=False)
+
     class Meta:
         model = Device
         sequence = ("device_name", "supplier", "product", "product_id__version", "product_id__type", )
         exclude = ("product_id", )
         attrs = {
-            "class": "table-striped table-hover table table-bordered table-sm",
+            "class": "table-striped table-hover table table-bordered text-nowrap",
             "th": {
                 "class": ""
             },
             "li": {
-                "class":"page-item"
+                "class": "page-item"
             },
         }
         row_attrs = {
