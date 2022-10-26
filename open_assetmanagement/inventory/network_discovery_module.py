@@ -143,6 +143,24 @@ def nmap_discovery(scanning_range: str, discovered={}, syn=False) -> dict[str, d
                 entry['ports'] = nm[host]['tcp']
             except:
                 pass
+            try:
+                software = []
+                for proto in nm[host].all_protocols():
+                    ports = nm[host][proto].keys()
+                    for port in ports:
+                        print(port)
+                        print(nm[host][proto][port])
+                        sw = {
+                            "port": port,
+                            "name": str(nm[host][proto][port]["name"]) + " - " + str(nm[host][proto][port]["product"]),
+                            "version": nm[host][proto][port]["version"],
+                            "full": nm[host][proto][port],
+                        }
+                        software.append(sw)
+                print(software)
+                entry.update({"software": software})
+            except:
+                print("error in sw")
             discovered.update({host: entry})
     except:
         print("No root!")

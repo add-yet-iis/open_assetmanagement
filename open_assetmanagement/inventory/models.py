@@ -72,6 +72,8 @@ class Software(models.Model):
     software_version = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length=255, blank=True)
     endOfSupport = models.DateField(blank=True, null=True)
+    ports = models.CharField(max_length=255, blank=True, null=True)
+    additional_info = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.software_name

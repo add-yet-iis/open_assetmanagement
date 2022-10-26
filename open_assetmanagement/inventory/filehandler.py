@@ -1,7 +1,8 @@
 import csv
 import os
 import pandas
-from .models import Device, Product, ProductSupplier
+from .models import Device, Product, ProductSupplier, Software
+from ast import literal_eval
 
 
 def handle_uploaded_file(f, delimiter=','):
@@ -112,9 +113,18 @@ def csv_to_device(filename, delimiter=','):
                 device.network = row['network']
             if 'group' in row and not row['group'] == "":
                 device.group = row['group']
-            if 'ports' in row and not row['ports'] == "":
-                device.configuration_file = row['ports']
             device.save()
+
+            if 'software' in row and row['software']:
+                for sw in literal_eval(row['software']):
+                    print(sw)
+                    software, exists = Software.objects.update_or_create(
+                        software_name=sw['name'],
+                        software_version=sw['version'],
+                    )
+                    software.devices.add(device)
+                    software.ports = sw['port']
+                    software.save()
 
 
 def xlsx_to_csv(d_loc, d_name, d_name_csv):
