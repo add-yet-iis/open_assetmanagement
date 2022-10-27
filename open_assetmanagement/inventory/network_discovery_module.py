@@ -31,19 +31,24 @@ INTERFACE = "eth1"
 # }
 
 
-def initial_netdiscover(scan_range: str, active=False):
+def initial_netdiscover(scan_range: str, active=False, timeout: int = 300):
     """ This function performs an ARP Scan via the command-line tool netdiscover and returns the data as a dictionary
 
+    :param timeout: This parameter describes how long the netdiscover scan should run for in seconds. Default is 300
     :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,
     /16 and /24 only
     :param active: Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff
     :return:
     """
     discovered = {}
-    expr = "sudo netdiscover -r " + scan_range + " -i " + INTERFACE + " -PN"
     if not active:
-        expr = expr + 'p'
-    for line in subprocess.check_output(expr, shell=True).decode("utf-8").splitlines():
+        process = subprocess.Popen(['sudo', 'timeout', str(timeout), 'netdiscover', '-r', scan_range, '-i', INTERFACE, '-PNp'],
+                               stdout=subprocess.PIPE)
+    else:
+        process = subprocess.Popen(['sudo', 'netdiscover', '-r', scan_range, '-i', INTERFACE, '-PN'],
+                                   stdout=subprocess.PIPE)
+    out, err = process.communicate()
+    for line in out.decode("utf-8").splitlines():
         line = line.split(maxsplit=4)
         if not line:
             return discovered
@@ -84,12 +89,13 @@ def crackmapexec(scanning_range: str) -> dict[str, dict[str, str]]:
     return discovered
 
 
-def nmap_discovery(scanning_range: str, discovered=None, syn=False) -> dict[str, dict[str, str]]:
+def nmap_discovery(scanning_range: str, discovered=None, syn=False, full=False) -> dict[str, dict[str, str]]:
     """
     Discovers Assets with the command-line-tool nmap and returns them in a Dict
 
+    :param full: Do a full scan. Scanns all ports
     :param discovered: Already discovered hosts
-    :param syn: Use Syn Scan
+    :param syn: Use Syn Scan. Scans the top 100 ports with Stealth-Syn Scan
     :param scanning_range: str IP Range of Network to be scanned
     :return: Discovered Data
     :rtype: dict[str, dict[str, str]]
@@ -100,7 +106,9 @@ def nmap_discovery(scanning_range: str, discovered=None, syn=False) -> dict[str,
     discovered = discovered
     try:
         if syn:
-            nm.scan(hosts=scanning_range, arguments='', sudo=True)
+            nm.scan(hosts=scanning_range, arguments='-sS --top-ports 100', sudo=True)
+        elif full:
+            nm.scan(hosts=scanning_range, arguments='-sS -sV -p- -T4', sudo=True)
         else:
             nm.scan(hosts=scanning_range, arguments='-sV -O', sudo=True)
 
@@ -190,19 +198,24 @@ def data_combine(data_cme: dict, data_nmap: dict) -> object:
     return data_nmap
 
 
-def network_discovery(scan_range: str, level: int) -> str:
+def network_discovery(scan_range: str, level: int, timeout: int) -> str:
     """
     This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
     the filehandler. It is an example of a module to expand the asset management DB and Webapp
 
+    :param timeout: Timeout for netdiscover
     :param level: Scanning Intensity. 0 - passive Netdiscover, 1 - SYN Scan, 2 - OS Scan
     :param scan_range: str IP Range of Network to be scanned
     :return: CSV to be handled
     """
 
     # Level (very) Careful = Netdiscover Scan! Needs Sudo Privileges
-    data = initial_netdiscover(scan_range, bool(level))
-    if level == 3:
+    data = initial_netdiscover(scan_range, bool(level), timeout)
+    if level == 2:
+        # Level 2 Medium - SYN Scan
+        data = nmap_discovery(scan_range, data, syn=True)
+    elif level == 3:
+        # Level 3 Os Scan
         # Start with NMAP Scan. Will run nmap -sV -O if run as sudo. (Highly recommended) and return a Dict
         data_nmap = nmap_discovery(scan_range, data)
 
@@ -211,9 +224,9 @@ def network_discovery(scan_range: str, level: int) -> str:
 
         # Add the CME Data to the Nmap Data
         data = data_combine(data_cme, data_nmap)
-    elif level == 2:
-        # Level 2 Medium - SYN Scan
-        data = nmap_discovery(scan_range, data, True)
+    elif level == 4:
+        # Level 4 Full Port Scan
+        data = nmap_discovery(scan_range, data, full=True)
 
     # Convert found Data to csv
     # noinspection PyArgumentList

@@ -44,7 +44,16 @@ class NetworkdiscoveryForm(forms.Form):
             (0, 'Very Careful - Only passive Arp Scan (Netdiscover)'),
             (1, 'Careful - Only active Arp Scan (Netdiscover)'),
             (2, "Medium - NMAP TCP-SYN Scan"),
-            (3, "Full - NMAP OS Scan, NSE Scripts, CME Scan and Full Port Scans"),
+            (3, "Os - NMAP OS Scan and CME Scan"),
+            (4, "Full - Full Port Scan"),
+        ]
+    )
+    timeout = forms.ChoiceField(
+        choices=[
+            (15, 'Very Fast - 15 Seconds'),
+            (60, 'Fast - 1 Minute'),
+            (300, "Medium - 5 Minutes"),
+            (3600, "Slow - 1 Hour"),
         ]
     )
 

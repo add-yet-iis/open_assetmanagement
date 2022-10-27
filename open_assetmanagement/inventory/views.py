@@ -112,8 +112,7 @@ def upload_file(request):
 
 @login_required(login_url='inventory:login')
 def network_scan(request):
-    ip_range = str(request.POST.get("ip_range"))
-    csv_to_device(network_discovery(ip_range, int(request.POST.get("type"))))
+    csv_to_device(network_discovery(str(request.POST.get("ip_range")), int(request.POST.get("type")), int(request.POST.get("timeout"))))
     return HttpResponseRedirect(reverse('inventory:index'))
 
 
