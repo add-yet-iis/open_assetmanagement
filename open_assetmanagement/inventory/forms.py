@@ -58,6 +58,10 @@ class NetworkdiscoveryForm(forms.Form):
     )
 
 
+class S7discoveryForm(forms.Form):
+    ip_range = forms.CharField()
+
+
 class UploadFileForm(forms.Form):
     # title = forms.CharField(max_length=50)
     file = forms.FileField()

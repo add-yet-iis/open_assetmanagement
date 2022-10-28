@@ -67,10 +67,20 @@
                 <div>
                     <h5>Networkdiscovery Module</h5>
                     <hr>
-                    <form action="/networkscan/" enctype="multipart/form-data" method="post">
+                    <form action="{% url 'inventory:netscan' %}" enctype="multipart/form-data" method="post">
                         {% load crispy_forms_tags %}
                         {% csrf_token %}
                         {{ networkdiscovery_form|crispy}}
+                        <input type="submit" value="Submit">
+                    </form>
+                    {% csrf_token %}
+
+                    <hr>
+                    <h5>Siemens S7 Scan</h5>
+                    <form action="{% url 'inventory:s7scan' %}" enctype="multipart/form-data" method="post">
+                        {% load crispy_forms_tags %}
+                        {% csrf_token %}
+                        {{ s7discovery_form|crispy}}
                         <input type="submit" value="Submit">
                     </form>
                     {% csrf_token %}

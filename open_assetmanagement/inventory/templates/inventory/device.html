@@ -11,9 +11,13 @@
             <hr>
 
             <p>Name: {{ device.device_name }}</p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p>Serial Number: {{device.serial_number}}</p>
+            <p>MAC: {{device.mac_address}}</p>
+            <p>IP: {{device.ip_address}}</p>
+            <p>OS: {{device.os}}</p>
+            <p>Group: {{device.group}}</p>
+            <p>Network: {{device.network}}</p>
+            <p>Location: {{device.location}}</p>
             <div class="d-flex">
                 <a class="btn flex-fill btn-outline-info  btn-sm btn-block me-1" href="{% url 'inventory:change_device' device.pk %}">Update Device</a>
                 <a class="btn flex-fill btn-outline-danger  btn-sm btn-block" href="{% url 'inventory:delete_device' device.pk %}">Delete Device</a>
@@ -26,7 +30,17 @@
         <div class="card card-body">
             <h5>Info</h5>
             <hr>
-            <h1 style="text-align: center;padding: 10px"></h1>
+
+            {% if device.automatic_import %}
+            <div class="alert alert-danger" role="alert">
+                Warning! Automatic Import
+            </div>
+            {% endif %}
+            {% if device.csv_import %}
+            <div class="alert alert-warning" role="alert">
+                Warning! CSV Import
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -198,6 +198,42 @@ def data_combine(data_cme: dict, data_nmap: dict) -> object:
     return data_nmap
 
 
+def s7_discovery(scan_range: str):
+    discovered = {}
+    nm = nmap.PortScanner()
+    try:
+        nm.scan(hosts=scan_range, arguments='--script s7-info.nse -p 102 ', sudo=True)
+
+        filtered_hosts = []
+        for host in nm.all_hosts():
+            if nm[host]['tcp'][102]['state'] in 'open':
+                filtered_hosts.append(host)
+
+        for host in filtered_hosts:
+
+            entry = {
+                "name": nm[host]['hostnames'][0]['name'] if not nm[host]['hostnames'][0]['name'] == "" else "PLC-" + str(host),
+                "os": "",
+                "supplier": "Siemens",
+                "mac": nm[host]['addresses']['mac'],
+                "ports": "102",
+                "type": "PLC",
+                "auto": True,
+                "network": scan_range,
+                "model": nm[host]['tcp'][102]['product'] + " - " +
+                         nm[host]['tcp'][102]['script']['s7-info'].splitlines()[1].replace("Module: ", "").strip(),
+                "version": nm[host]['tcp'][102]['script']['s7-info'].splitlines()[3].replace("Version: ", "").strip(),
+                "serial_number": nm[host]['tcp'][102]['script']['s7-info'].splitlines()[5].replace("Serial Number: ", "").strip()
+            }
+            discovered.update({host: entry})
+    except:
+        print("No root!")
+
+    # noinspection PyArgumentList
+    pd.DataFrame(discovered).T.reset_index(names="ip").to_csv('s7_discovery.csv', index=False)
+    return 's7_discovery.csv'
+
+
 def network_discovery(scan_range: str, level: int, timeout: int) -> str:
     """
     This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
@@ -234,3 +270,6 @@ def network_discovery(scan_range: str, level: int, timeout: int) -> str:
 
     # Return csv filename to be imported by the filehandler into database
     return 'network_discovery.csv'
+
+
+s7_discovery(RANGE)

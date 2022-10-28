@@ -18,6 +18,7 @@ urlpatterns = [
 
     # Import Modules
     path('networkscan/', views.network_scan, name='netscan'),
+    path('s7scan/', views.s7_scan, name='s7scan'),
 
     # Object CRUD
     path('device/<int:pk>', views.device, name='device'),

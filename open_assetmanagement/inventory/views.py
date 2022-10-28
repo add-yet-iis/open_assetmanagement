@@ -2,7 +2,7 @@ from .models import Device, Product, ProductSupplier, Software
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, NetworkdiscoveryForm, CreateUserForm, \
-    SoftwareForm
+    SoftwareForm, S7discoveryForm
 from .filehandler import handle_uploaded_file, csv_to_device
 from django.urls import reverse
 from .tables import DeviceTable, ProductTable
@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import csv
-from .network_discovery_module import network_discovery
+from .network_discovery_module import network_discovery, s7_discovery
 
 
 @login_required(login_url='inventory:login')
@@ -95,6 +95,7 @@ def index(request):
         exporter = TableExport(export_format, context['table'])
         return exporter.response("assets".format(export_format))
     context['networkdiscovery_form'] = NetworkdiscoveryForm()
+    context['s7discovery_form'] = S7discoveryForm()
     return render(request, "inventory/index.html", context)
 
 
@@ -113,6 +114,12 @@ def upload_file(request):
 @login_required(login_url='inventory:login')
 def network_scan(request):
     csv_to_device(network_discovery(str(request.POST.get("ip_range")), int(request.POST.get("type")), int(request.POST.get("timeout"))))
+    return HttpResponseRedirect(reverse('inventory:index'))
+
+
+@login_required(login_url='inventory:login')
+def s7_scan(request):
+    csv_to_device(s7_discovery(str(request.POST.get("ip_range"))))
     return HttpResponseRedirect(reverse('inventory:index'))
 
 

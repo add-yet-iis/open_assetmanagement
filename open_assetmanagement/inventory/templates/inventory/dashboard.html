@@ -114,6 +114,8 @@
                 <tr>
                     <th></th>
                     <th>Name</th>
+                    <th>Version</th>
+                    <th>Ports</th>
                     <th>Category</th>
                     <th>EoS</th>
                     <th></th>
@@ -122,6 +124,8 @@
                 <tr>
                     <td><a class="btn btn-sm btn-info" href="{% url 'inventory:software' software.id %}">View</a></td>
                     <td>{{software.software_name}}</td>
+                    <td>{{software.software_version}}</td>
+                    <td>{{software.ports}}</td>
                     <td>{{software.software_category}}</td>
                     <td>{{software.software_endOfSupport}}</td>
                     <td><a class="btn btn-sm btn-danger" href="{% url 'inventory:delete_software' software.id %}">Delete</a></td>
