@@ -1,8 +1,6 @@
 open\_assetmanagement package
 =============================
 
-Submodules
-----------
 
 open\_assetmanagement.asgi module
 ---------------------------------

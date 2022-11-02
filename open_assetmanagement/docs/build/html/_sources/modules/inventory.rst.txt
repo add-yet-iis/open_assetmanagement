@@ -1,17 +1,6 @@
 inventory package
 =================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   inventory.migrations
-
-Submodules
-----------
-
 ..
     inventory.admin module
     ----------------------
@@ -85,11 +74,50 @@ inventory.network\_discovery\_module module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+inventory.filters module
+----------------------------
 
-.. automodule:: inventory
+.. automodule:: inventory.filters
    :members:
    :undoc-members:
    :show-inheritance:
 
+inventory.forms module
+----------------------------
+
+.. automodule:: inventory.forms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+inventory.models module
+----------------------------
+
+.. automodule:: inventory.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+inventory.tables module
+----------------------------
+
+.. automodule:: inventory.tables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+inventory.urls module
+----------------------------
+
+.. automodule:: inventory.urls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+inventory.views module
+----------------------------
+
+.. automodule:: inventory.views
+   :members:
+   :undoc-members:
+   :show-inheritance:

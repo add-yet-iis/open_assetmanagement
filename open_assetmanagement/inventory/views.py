@@ -5,7 +5,7 @@ from .forms import UploadFileForm, DeviceForm, ProductForm, SupplierForm, Networ
     SoftwareForm, S7discoveryForm
 from .filehandler import handle_uploaded_file, csv_to_device
 from django.urls import reverse
-from .tables import DeviceTable, ProductTable
+from .tables import DeviceTable
 from .filters import DeviceFilter
 from django_tables2 import RequestConfig
 from django_tables2.export.export import TableExport
@@ -18,13 +18,35 @@ from .network_discovery_module import network_discovery, s7_discovery
 
 @login_required(login_url='inventory:login')
 def dashboard(request):
+    """This is the view function for the Dashboard view (Home)
+    It gets all the :class:`devices  <inventory.models.Device>`, :class:`products  <inventory.models.Product>`,
+    :class:`suppliers  <inventory.models.ProductSupplier>` and :class:`software  <inventory.models.Software>` from the database
+    It also creates the :class:`UploadFileForm  <inventory.forms.UploadFileForm>`, used for the Excel/CSV Import Functionality
+
+    .. note::
+        Only for logged in Users
+
+    .. code-block::
+
+        context = {
+        'devices': devices,
+        'products': products,
+        'suppliers': suppliers,
+        'softwares': softwares,
+        'total_devices': devices.count(),
+        'total_products': products.count(),
+        'total_suppliers': suppliers.count(),
+        'total_software': softwares.count(),
+        'form': UploadFileForm(),
+        }
+
+    :param request:
+    :return:
+    """
     devices = Device.objects.all()
     products = Product.objects.all()
     suppliers = ProductSupplier.objects.all()
     softwares = Software.objects.all()
-    product_table = ProductTable(products)
-    RequestConfig(request, paginate={"per_page": 8}).configure(product_table)
-    form = UploadFileForm()
     context = {
         'devices': devices,
         'products': products,
@@ -34,13 +56,18 @@ def dashboard(request):
         'total_products': products.count(),
         'total_suppliers': suppliers.count(),
         'total_software': softwares.count(),
-        'product_table': product_table,
-        'form': form,
+        'form': UploadFileForm(),
     }
     return render(request, "inventory/dashboard.html", context)
 
 
 def register_page(request):
+    """This is the view function for the registration
+    It Uses the :class:`CreateUserForm  <inventory.forms.CreateUserForm>`
+
+    :param request:
+    :return:
+    """
     if request.user.is_authenticated:
         return redirect('inventory:dashboard')
     else:
@@ -59,6 +86,11 @@ def register_page(request):
 
 
 def login_page(request):
+    """This is the view function for the login
+
+    :param request:
+    :return:
+    """
     if request.user.is_authenticated:
         return redirect('inventory:login')
     else:
@@ -79,12 +111,26 @@ def login_page(request):
 
 
 def logout_user(request):
+    """This function logs the user out and redirects to the login page
+
+    :param request:
+    :return:
+    """
     logout(request)
     return redirect('inventory:login')
 
 
 @login_required(login_url='inventory:login')
 def index(request):
+    """This function provides the :class:`~inventory.tables.DeviceTable` for the table view. It also implements the
+    export of the table view
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     context = {}
     devices = Device.objects.all()
     context['filter'] = DeviceFilter(request.GET, queryset=devices)
@@ -101,6 +147,14 @@ def index(request):
 
 @login_required(login_url='inventory:login')
 def upload_file(request):
+    """This function implements the :class:`~inventory.forms.UploadFileForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -113,18 +167,42 @@ def upload_file(request):
 
 @login_required(login_url='inventory:login')
 def network_scan(request):
+    """This is the function to start a network_scan and hand the data to the filehandler
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     csv_to_device(network_discovery(str(request.POST.get("ip_range")), int(request.POST.get("type")), int(request.POST.get("timeout"))))
     return HttpResponseRedirect(reverse('inventory:index'))
 
 
 @login_required(login_url='inventory:login')
 def s7_scan(request):
+    """This is the function to start a s7_scan and hand the data to the filehandler
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     csv_to_device(s7_discovery(str(request.POST.get("ip_range"))))
     return HttpResponseRedirect(reverse('inventory:index'))
 
 
 @login_required(login_url='inventory:login')
 def download_file(request):
+    """This function lets the user download the whole database as csv
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(
         content_type='text/csv',
@@ -146,6 +224,15 @@ def download_file(request):
 
 @login_required(login_url='inventory:login')
 def device(request, pk):
+    """This is the function for the detail view for the :class:`~inventory.models.Device` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     device = Device.objects.get(pk=pk)
     softwares = device.software_set.all()
     context = {"pk": pk, "device": device, "softwares": softwares}
@@ -154,6 +241,16 @@ def device(request, pk):
 
 @login_required(login_url='inventory:login')
 def change_device(request, pk):
+    """This is the function for the change view for the :class:`~inventory.models.Device` model
+    It uses the :class:`~inventory.forms.DeviceForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     device = Device.objects.get(pk=pk)
     if request.method == "POST":
         form = DeviceForm(request.POST, instance=device)
@@ -170,6 +267,15 @@ def change_device(request, pk):
 
 @login_required(login_url='inventory:login')
 def create_device(request):
+    """This is the function for the create view for the :class:`~inventory.models.Device` model
+    It uses the :class:`~inventory.forms.DeviceForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     if request.method == "POST":
         form = DeviceForm(request.POST)
         if form.is_valid():
@@ -185,6 +291,15 @@ def create_device(request):
 
 @login_required(login_url='inventory:login')
 def delete_device(request, pk):
+    """This is the function for the delete view for the :class:`~inventory.models.Device` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     device = Device.objects.get(pk=pk)
     device.delete()
     return HttpResponseRedirect(reverse('inventory:dashboard'))
@@ -192,6 +307,14 @@ def delete_device(request, pk):
 
 @login_required(login_url='inventory:login')
 def product(request, pk):
+    """This is the function for the detail view for the :class:`~inventory.models.Product` model
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     product = Product.objects.get(pk=pk)
     devices = Device.objects.all().filter(product_id=pk)
     context = {"pk": pk, "product": product, "devices": devices}
@@ -200,6 +323,16 @@ def product(request, pk):
 
 @login_required(login_url='inventory:login')
 def change_product(request, pk):
+    """This is the function for the change view for the :class:`~inventory.models.Product` model
+    It uses the :class:`~inventory.forms.ProductForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     product = Product.objects.get(pk=pk)
     context = {"product": product}
     if request.method == "POST":
@@ -217,6 +350,15 @@ def change_product(request, pk):
 
 @login_required(login_url='inventory:login')
 def create_product(request):
+    """This is the function for the create view for the :class:`~inventory.models.Product` model
+    It uses the :class:`~inventory.forms.ProductForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     context = {}
     if request.method == "POST":
         context["form"] = ProductForm(request.POST)
@@ -233,6 +375,15 @@ def create_product(request):
 
 @login_required(login_url='inventory:login')
 def delete_product(request, pk):
+    """This is the function for the delete view for the :class:`~inventory.models.Product` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     product = Product.objects.get(pk=pk)
     product.delete()
     return HttpResponseRedirect(reverse('inventory:dashboard'))
@@ -240,6 +391,15 @@ def delete_product(request, pk):
 
 @login_required(login_url='inventory:login')
 def supplier(request, pk):
+    """This is the function for the detail view for the :class:`~inventory.models.ProductSupplier` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     supplier = ProductSupplier.objects.get(pk=pk)
     context = {
         "pk": pk,
@@ -252,6 +412,16 @@ def supplier(request, pk):
 
 @login_required(login_url='inventory:login')
 def change_supplier(request, pk):
+    """This is the function for the change view for the :class:`~inventory.models.ProductSupplier` model
+    It uses the :class:`~inventory.forms.SupplierForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     supplier = ProductSupplier.objects.get(pk=pk)
     context = {}
     context["pk"] = pk
@@ -272,6 +442,15 @@ def change_supplier(request, pk):
 
 @login_required(login_url='inventory:login')
 def create_supplier(request):
+    """This is the function for the create view for the :class:`~inventory.models.ProductSupplier` model
+    It uses the :class:`~inventory.forms.SupplierForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     context = {}
     if request.method == "POST":
         context["form"] = SupplierForm(request.POST)
@@ -288,6 +467,15 @@ def create_supplier(request):
 
 @login_required(login_url='inventory:login')
 def delete_supplier(request, pk):
+    """This is the function for the delete view for the :class:`~inventory.models.ProductSupplier` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     supplier = ProductSupplier.objects.get(pk=pk)
     supplier.delete()
     return HttpResponseRedirect(reverse('inventory:dashboard'))
@@ -295,6 +483,15 @@ def delete_supplier(request, pk):
 
 @login_required(login_url='inventory:login')
 def software(request, pk):
+    """This is the function for the detail view for the :class:`~inventory.models.Software` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     software = Software.objects.get(pk=pk)
     devices = software.devices.all()
     context = {
@@ -307,6 +504,16 @@ def software(request, pk):
 
 @login_required(login_url='inventory:login')
 def change_software(request, pk):
+    """This is the function for the change view for the :class:`~inventory.models.Software` model
+    It uses the :class:`~inventory.forms.SoftwareForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     software = Software.objects.get(pk=pk)
     context = {}
     context["pk"] = pk
@@ -327,6 +534,15 @@ def change_software(request, pk):
 
 @login_required(login_url='inventory:login')
 def create_software(request):
+    """This is the function for the create view for the :class:`~inventory.models.Software` model
+    It uses the :class:`~inventory.forms.SoftwareForm`
+
+    .. note::
+        Only for logged in Users
+
+    :param request:
+    :return:
+    """
     context = {}
     if request.method == "POST":
         context["form"] = SoftwareForm(request.POST)
@@ -343,6 +559,15 @@ def create_software(request):
 
 @login_required(login_url='inventory:login')
 def delete_software(request, pk):
+    """This is the function for the delete view for the :class:`~inventory.models.Software` model
+
+    .. note::
+        Only for logged in Users
+
+    :param pk:
+    :param request:
+    :return:
+    """
     software = Software.objects.get(pk=pk)
     software.delete()
     return HttpResponseRedirect(reverse('inventory:dashboard'))

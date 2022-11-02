@@ -3,6 +3,26 @@ This module is an example for a module that could extend the asset-management to
 It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
 in the form of a csv file
 
+.. note::
+
+    WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
+
+Format of Discoveries
+
+.. code-block::
+
+    discovered = {
+        "ip": {
+           "name": "",
+           "os": "",
+           "supplier": "",
+           "mac": "",
+           "ports": "",
+           "network": scanning_range,
+           "domain": "",
+        }
+    }
+
 """
 
 import nmap
@@ -13,30 +33,16 @@ RANGE = "10.0.0.0/24"
 CME_SMB = "\x1b[1m\x1b[34mSMB\x1b[0m"
 CME_STAR = "\x1b[1m\x1b[34m[*]\x1b[0m"
 INTERFACE = "eth1"
-# WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER
-
-# Format of Discoveries
-# discovered = {
-#    "ip": {
-#       "name": "",
-#       "os": "",
-#       "supplier": "",
-#       "mac": "",
-#       "ports": "",
-#       "network": scanning_range,
-#       "domain": "",
-# }
-# }
 
 
 def initial_netdiscover(scan_range: str, active=False, timeout: int = 300):
     """ This function performs an ARP Scan via the command-line tool netdiscover and returns the data as a dictionary
 
     :param timeout: This parameter describes how long the netdiscover scan should run for in seconds. Default is 300
-    :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,
-    /16 and /24 only
+    :param scan_range: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,/16 and /24 only
     :param active: Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff
-    :return:
+    :return: Discovered Data
+    :rtype: dict[str, dict[str, str]]
     """
     discovered = {}
     if not active:
@@ -172,9 +178,10 @@ def nmap_discovery(scanning_range: str, discovered=None, syn=False, full=False) 
     return discovered
 
 
-def data_combine(data_cme: dict, data_nmap: dict) -> object:
+def data_combine(data_cme: dict, data_nmap: dict) -> dict:
     """
     This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
+    It is necessary because not all data from CME will be used.
 
     :param data_cme: CME data output by the cme function
     :param data_nmap: Nmap data output by the nmap function
@@ -196,7 +203,14 @@ def data_combine(data_cme: dict, data_nmap: dict) -> object:
     return data_nmap
 
 
-def s7_discovery(scan_range: str):
+def s7_discovery(scan_range: str) -> str:
+    """
+    This Function performs a siemens s7 scan via nmap
+
+    :rtype: string
+    :param scan_range: The IP range to be scanned
+    :return: Filename of created CSV containing the information
+    """
     discovered = {}
     nm = nmap.PortScanner()
     try:

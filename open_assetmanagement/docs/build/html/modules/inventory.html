@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="inventory.migrations package" href="inventory.migrations.html" />
+    <link rel="next" title="manage module" href="manage.html" />
     <link rel="prev" title="open_assetmanagement" href="modules.html" /> 
 </head>
 
@@ -43,11 +43,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">open_assetmanagement</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">inventory package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="inventory.migrations.html">inventory.migrations package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-inventory.filehandler">inventory.filehandler module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.csv_to_device"><code class="docutils literal notranslate"><span class="pre">csv_to_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.csv_to_xlsx"><code class="docutils literal notranslate"><span class="pre">csv_to_xlsx()</span></code></a></li>
@@ -64,7 +59,62 @@
 <li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.s7_discovery"><code class="docutils literal notranslate"><span class="pre">s7_discovery()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-inventory">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.filters">inventory.filters module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.filters.DeviceFilter"><code class="docutils literal notranslate"><span class="pre">DeviceFilter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.forms">inventory.forms module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.CreateUserForm"><code class="docutils literal notranslate"><span class="pre">CreateUserForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.DeviceForm"><code class="docutils literal notranslate"><span class="pre">DeviceForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.NetworkdiscoveryForm"><code class="docutils literal notranslate"><span class="pre">NetworkdiscoveryForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.ProductForm"><code class="docutils literal notranslate"><span class="pre">ProductForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.S7discoveryForm"><code class="docutils literal notranslate"><span class="pre">S7discoveryForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.SoftwareForm"><code class="docutils literal notranslate"><span class="pre">SoftwareForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.SupplierForm"><code class="docutils literal notranslate"><span class="pre">SupplierForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.forms.UploadFileForm"><code class="docutils literal notranslate"><span class="pre">UploadFileForm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.models">inventory.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.models.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.models.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.models.ProductSupplier"><code class="docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.models.Software"><code class="docutils literal notranslate"><span class="pre">Software</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.tables">inventory.tables module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.tables.DeviceTable"><code class="docutils literal notranslate"><span class="pre">DeviceTable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.tables.ProductTable"><code class="docutils literal notranslate"><span class="pre">ProductTable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.urls">inventory.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.views">inventory.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.change_device"><code class="docutils literal notranslate"><span class="pre">change_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.change_product"><code class="docutils literal notranslate"><span class="pre">change_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.change_software"><code class="docutils literal notranslate"><span class="pre">change_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.change_supplier"><code class="docutils literal notranslate"><span class="pre">change_supplier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.create_device"><code class="docutils literal notranslate"><span class="pre">create_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.create_product"><code class="docutils literal notranslate"><span class="pre">create_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.create_software"><code class="docutils literal notranslate"><span class="pre">create_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.create_supplier"><code class="docutils literal notranslate"><span class="pre">create_supplier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.dashboard"><code class="docutils literal notranslate"><span class="pre">dashboard()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.delete_device"><code class="docutils literal notranslate"><span class="pre">delete_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.delete_product"><code class="docutils literal notranslate"><span class="pre">delete_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.delete_software"><code class="docutils literal notranslate"><span class="pre">delete_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.delete_supplier"><code class="docutils literal notranslate"><span class="pre">delete_supplier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.device"><code class="docutils literal notranslate"><span class="pre">device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.login_page"><code class="docutils literal notranslate"><span class="pre">login_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.logout_user"><code class="docutils literal notranslate"><span class="pre">logout_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.network_scan"><code class="docutils literal notranslate"><span class="pre">network_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.product"><code class="docutils literal notranslate"><span class="pre">product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.register_page"><code class="docutils literal notranslate"><span class="pre">register_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.s7_scan"><code class="docutils literal notranslate"><span class="pre">s7_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.software"><code class="docutils literal notranslate"><span class="pre">software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.supplier"><code class="docutils literal notranslate"><span class="pre">supplier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.views.upload_file"><code class="docutils literal notranslate"><span class="pre">upload_file()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
@@ -104,20 +154,6 @@
              
   <section id="inventory-package">
 <h1>inventory package<a class="headerlink" href="#inventory-package" title="Permalink to this heading"></a></h1>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="inventory.migrations.html">inventory.migrations package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inventory.migrations.html#module-inventory.migrations">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
 <section id="module-inventory.filehandler">
 <span id="inventory-filehandler-module"></span><h2>inventory.filehandler module<a class="headerlink" href="#module-inventory.filehandler" title="Permalink to this heading"></a></h2>
 <dl class="py function">
@@ -183,6 +219,24 @@ If it’s a csv send directly to csv_to_device else convert to csv first.</p>
 <p>This module is an example for a module that could extend the asset-management tool.
 It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
 in the form of a csv file</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WARNING ! POTENTIAL SHELL INJECTION VIA RANGE ! FILTER FILTER FILTER</p>
+</div>
+<p>Format of Discoveries</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">discovered</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;os&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;supplier&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;ports&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;network&quot;</span><span class="p">:</span> <span class="n">scanning_range</span><span class="p">,</span>
+       <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="py function">
 <dt class="sig sig-object py" id="inventory.network_discovery_module.crackmapexec">
 <span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">crackmapexec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scanning_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#inventory.network_discovery_module.crackmapexec" title="Permalink to this definition"></a></dt>
@@ -202,8 +256,9 @@ in the form of a csv file</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="inventory.network_discovery_module.data_combine">
-<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">data_combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.data_combine" title="Permalink to this definition"></a></dt>
-<dd><p>This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict</p>
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">data_combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.data_combine" title="Permalink to this definition"></a></dt>
+<dd><p>This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict
+It is necessary because not all data from CME will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -225,13 +280,17 @@ in the form of a csv file</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>timeout</strong> – This parameter describes how long the netdiscover scan should run for in seconds. Default is 300</p></li>
-<li><p><strong>scan_range</strong> – 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,</p></li>
+<li><p><strong>scan_range</strong> – 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8. Currently, acceptable ranges are /8,/16 and /24 only</p></li>
+<li><p><strong>active</strong> – Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Discovered Data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, dict[str, str]]</p>
+</dd>
 </dl>
-<p>/16 and /24 only
-:param active: Enable active mode. In passive mode, netdiscover does not send anything, but does only sniff
-:return:</p>
 </dd></dl>
 
 <dl class="py function">
@@ -277,12 +336,1462 @@ the filehandler. It is an example of a module to expand the asset management DB 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="inventory.network_discovery_module.s7_discovery">
-<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">s7_discovery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.network_discovery_module.s7_discovery" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">s7_discovery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.s7_discovery" title="Permalink to this definition"></a></dt>
+<dd><p>This Function performs a siemens s7 scan via nmap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>scan_range</strong> – The IP range to be scanned</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Filename of created CSV containing the information</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
-<section id="module-inventory">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-inventory" title="Permalink to this heading"></a></h2>
+<section id="module-inventory.filters">
+<span id="inventory-filters-module"></span><h2>inventory.filters module<a class="headerlink" href="#module-inventory.filters" title="Permalink to this heading"></a></h2>
+<p>This file contains django filters for the django models</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.filters.</span></span><span class="sig-name descname"><span class="pre">DeviceFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queryset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.filters.DeviceFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FilterSet</span></code></p>
+<p>This Class is used to filter the Device Names in a queryset</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.filters.DeviceFilter.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#inventory.filters.DeviceFilter.Meta.fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.filters.DeviceFilter.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter.base_filters">
+<span class="sig-name descname"><span class="pre">base_filters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'device_name':</span> <span class="pre">&lt;django_filters.filters.CharFilter</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.filters.DeviceFilter.base_filters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.filters.DeviceFilter.declared_filters">
+<span class="sig-name descname"><span class="pre">declared_filters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'device_name':</span> <span class="pre">&lt;django_filters.filters.CharFilter</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.filters.DeviceFilter.declared_filters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-inventory.forms">
+<span id="inventory-forms-module"></span><h2>inventory.forms module<a class="headerlink" href="#module-inventory.forms" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">CreateUserForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.CreateUserForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UserCreationForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.forms.CreateUserForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['username',</span> <span class="pre">'email',</span> <span class="pre">'password1',</span> <span class="pre">'password2']</span></em><a class="headerlink" href="#inventory.forms.CreateUserForm.Meta.fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.forms.CreateUserForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.CreateUserForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.CreateUserForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.CreateUserForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.CreateUserForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">DeviceForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.DeviceForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.forms.DeviceForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#inventory.forms.DeviceForm.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.forms.DeviceForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'automatic_import':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'communication_capability':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'configuration_file':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'criticality':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'csv_import':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'device_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'group':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'interdependencies':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'ip_address':</span> <span class="pre">&lt;django.forms.fields.GenericIPAddressField</span> <span class="pre">object&gt;,</span> <span class="pre">'location':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'mac_address':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'network':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'os':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'product_id':</span> <span class="pre">&lt;django.forms.models.ModelChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'redundancy':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'role':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'serial_number':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.DeviceForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#inventory.forms.DeviceForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.DeviceForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.DeviceForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.NetworkdiscoveryForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">NetworkdiscoveryForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.NetworkdiscoveryForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.NetworkdiscoveryForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ip_range':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'timeout':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'type':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.NetworkdiscoveryForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.NetworkdiscoveryForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ip_range':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'timeout':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'type':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.NetworkdiscoveryForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.NetworkdiscoveryForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.NetworkdiscoveryForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">ProductForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.ProductForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.forms.ProductForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#inventory.forms.ProductForm.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.forms.ProductForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'endOfSupport':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'model':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'product_supplier_id':</span> <span class="pre">&lt;django.forms.models.ModelChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'type':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'version':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.ProductForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#inventory.forms.ProductForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.ProductForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.ProductForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.S7discoveryForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">S7discoveryForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.S7discoveryForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.S7discoveryForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ip_range':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.S7discoveryForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.S7discoveryForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ip_range':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.S7discoveryForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.S7discoveryForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.S7discoveryForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">SoftwareForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.SoftwareForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.forms.SoftwareForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#inventory.forms.SoftwareForm.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.forms.SoftwareForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">Software</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'additional_info':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'category':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'communication_capability':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'devices':</span> <span class="pre">&lt;django.forms.models.ModelMultipleChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'endOfSupport':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'ports':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'product_supplier_id':</span> <span class="pre">&lt;django.forms.models.ModelChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'software_name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'software_version':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.SoftwareForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#inventory.forms.SoftwareForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.SoftwareForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.SoftwareForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">SupplierForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.SupplierForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.forms.SupplierForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#inventory.forms.SupplierForm.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.forms.SupplierForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'acquisitionHistory':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'additionalInformation':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'contact_information':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'supportContracts':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.SupplierForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#inventory.forms.SupplierForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.SupplierForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.SupplierForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.forms.</span></span><span class="sig-name descname"><span class="pre">UploadFileForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id='id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.UploadFileForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'delimiter':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'file':</span> <span class="pre">&lt;django.forms.fields.FileField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.UploadFileForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm.clean_file">
+<span class="sig-name descname"><span class="pre">clean_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.UploadFileForm.clean_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm.clean_title">
+<span class="sig-name descname"><span class="pre">clean_title</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory.forms.UploadFileForm.clean_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'delimiter':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'file':</span> <span class="pre">&lt;django.forms.fields.FileField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.forms.UploadFileForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inventory.forms.UploadFileForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#inventory.forms.UploadFileForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-inventory.models">
+<span id="inventory-models-module"></span><h2>inventory.models module<a class="headerlink" href="#module-inventory.models" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.Device">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.models.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serial_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mac_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">os</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">automatic_import</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_import</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redundancy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interdependencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criticality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communication_capability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Device" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.Device.CommunicationCapability">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CommunicationCapability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Device.CommunicationCapability" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TextChoices</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.CommunicationCapability.EXTERNAL">
+<span class="sig-name descname"><span class="pre">EXTERNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EX'</span></em><a class="headerlink" href="#inventory.models.Device.CommunicationCapability.EXTERNAL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.CommunicationCapability.LOCAL">
+<span class="sig-name descname"><span class="pre">LOCAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LO'</span></em><a class="headerlink" href="#inventory.models.Device.CommunicationCapability.LOCAL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.CommunicationCapability.NO_COMMUNICATION">
+<span class="sig-name descname"><span class="pre">NO_COMMUNICATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NO'</span></em><a class="headerlink" href="#inventory.models.Device.CommunicationCapability.NO_COMMUNICATION" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Device.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#inventory.models.Device.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Device.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#inventory.models.Device.MultipleObjectsReturned" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.automatic_import">
+<span class="sig-name descname"><span class="pre">automatic_import</span></span><a class="headerlink" href="#inventory.models.Device.automatic_import" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.communication_capability">
+<span class="sig-name descname"><span class="pre">communication_capability</span></span><a class="headerlink" href="#inventory.models.Device.communication_capability" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.configuration_file">
+<span class="sig-name descname"><span class="pre">configuration_file</span></span><a class="headerlink" href="#inventory.models.Device.configuration_file" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.criticality">
+<span class="sig-name descname"><span class="pre">criticality</span></span><a class="headerlink" href="#inventory.models.Device.criticality" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.csv_import">
+<span class="sig-name descname"><span class="pre">csv_import</span></span><a class="headerlink" href="#inventory.models.Device.csv_import" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.device_name">
+<span class="sig-name descname"><span class="pre">device_name</span></span><a class="headerlink" href="#inventory.models.Device.device_name" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.models.Device.get_communication_capability_display">
+<span class="sig-name descname"><span class="pre">get_communication_capability_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">communication_capability&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Device.get_communication_capability_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#inventory.models.Device.group" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#inventory.models.Device.id" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.interdependencies">
+<span class="sig-name descname"><span class="pre">interdependencies</span></span><a class="headerlink" href="#inventory.models.Device.interdependencies" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.ip_address">
+<span class="sig-name descname"><span class="pre">ip_address</span></span><a class="headerlink" href="#inventory.models.Device.ip_address" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.models.Device.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Device.keys" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.location">
+<span class="sig-name descname"><span class="pre">location</span></span><a class="headerlink" href="#inventory.models.Device.location" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.mac_address">
+<span class="sig-name descname"><span class="pre">mac_address</span></span><a class="headerlink" href="#inventory.models.Device.mac_address" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.network">
+<span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#inventory.models.Device.network" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#inventory.models.Device.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.os">
+<span class="sig-name descname"><span class="pre">os</span></span><a class="headerlink" href="#inventory.models.Device.os" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.product_id">
+<span class="sig-name descname"><span class="pre">product_id</span></span><a class="headerlink" href="#inventory.models.Device.product_id" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.product_id_id">
+<span class="sig-name descname"><span class="pre">product_id_id</span></span><a class="headerlink" href="#inventory.models.Device.product_id_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.redundancy">
+<span class="sig-name descname"><span class="pre">redundancy</span></span><a class="headerlink" href="#inventory.models.Device.redundancy" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.role">
+<span class="sig-name descname"><span class="pre">role</span></span><a class="headerlink" href="#inventory.models.Device.role" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.serial_number">
+<span class="sig-name descname"><span class="pre">serial_number</span></span><a class="headerlink" href="#inventory.models.Device.serial_number" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Device.software_set">
+<span class="sig-name descname"><span class="pre">software_set</span></span><a class="headerlink" href="#inventory.models.Device.software_set" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.models.Device.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Device.values" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.Product">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.models.</span></span><span class="sig-name descname"><span class="pre">Product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_supplier_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endOfSupport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Product" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Product.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#inventory.models.Product.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Product.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#inventory.models.Product.MultipleObjectsReturned" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.device_set">
+<span class="sig-name descname"><span class="pre">device_set</span></span><a class="headerlink" href="#inventory.models.Product.device_set" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.endOfSupport">
+<span class="sig-name descname"><span class="pre">endOfSupport</span></span><a class="headerlink" href="#inventory.models.Product.endOfSupport" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#inventory.models.Product.id" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.models.Product.model" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#inventory.models.Product.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.product_supplier_id">
+<span class="sig-name descname"><span class="pre">product_supplier_id</span></span><a class="headerlink" href="#inventory.models.Product.product_supplier_id" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.product_supplier_id_id">
+<span class="sig-name descname"><span class="pre">product_supplier_id_id</span></span><a class="headerlink" href="#inventory.models.Product.product_supplier_id_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#inventory.models.Product.type" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Product.version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#inventory.models.Product.version" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.models.</span></span><span class="sig-name descname"><span class="pre">ProductSupplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acquisitionHistory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supportContracts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additionalInformation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.ProductSupplier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.MultipleObjectsReturned" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.acquisitionHistory">
+<span class="sig-name descname"><span class="pre">acquisitionHistory</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.acquisitionHistory" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.additionalInformation">
+<span class="sig-name descname"><span class="pre">additionalInformation</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.additionalInformation" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.contact_information">
+<span class="sig-name descname"><span class="pre">contact_information</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.contact_information" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.id" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.name" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#inventory.models.ProductSupplier.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.product_set">
+<span class="sig-name descname"><span class="pre">product_set</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.product_set" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.software_set">
+<span class="sig-name descname"><span class="pre">software_set</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.software_set" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.ProductSupplier.supportContracts">
+<span class="sig-name descname"><span class="pre">supportContracts</span></span><a class="headerlink" href="#inventory.models.ProductSupplier.supportContracts" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.Software">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.models.</span></span><span class="sig-name descname"><span class="pre">Software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_supplier_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">software_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endOfSupport</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communication_capability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Software" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.models.Software.CommunicationCapability">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CommunicationCapability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Software.CommunicationCapability" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TextChoices</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.CommunicationCapability.EXTERNAL">
+<span class="sig-name descname"><span class="pre">EXTERNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EX'</span></em><a class="headerlink" href="#inventory.models.Software.CommunicationCapability.EXTERNAL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.CommunicationCapability.LOCAL">
+<span class="sig-name descname"><span class="pre">LOCAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LO'</span></em><a class="headerlink" href="#inventory.models.Software.CommunicationCapability.LOCAL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.CommunicationCapability.NOCOMMUNICATION">
+<span class="sig-name descname"><span class="pre">NOCOMMUNICATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NO'</span></em><a class="headerlink" href="#inventory.models.Software.CommunicationCapability.NOCOMMUNICATION" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Software.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#inventory.models.Software.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="inventory.models.Software.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#inventory.models.Software.MultipleObjectsReturned" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.additional_info">
+<span class="sig-name descname"><span class="pre">additional_info</span></span><a class="headerlink" href="#inventory.models.Software.additional_info" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#inventory.models.Software.category" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.communication_capability">
+<span class="sig-name descname"><span class="pre">communication_capability</span></span><a class="headerlink" href="#inventory.models.Software.communication_capability" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.devices">
+<span class="sig-name descname"><span class="pre">devices</span></span><a class="headerlink" href="#inventory.models.Software.devices" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.endOfSupport">
+<span class="sig-name descname"><span class="pre">endOfSupport</span></span><a class="headerlink" href="#inventory.models.Software.endOfSupport" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inventory.models.Software.get_communication_capability_display">
+<span class="sig-name descname"><span class="pre">get_communication_capability_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.TextField:</span> <span class="pre">communication_capability&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.models.Software.get_communication_capability_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#inventory.models.Software.id" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#inventory.models.Software.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.ports">
+<span class="sig-name descname"><span class="pre">ports</span></span><a class="headerlink" href="#inventory.models.Software.ports" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.product_supplier_id">
+<span class="sig-name descname"><span class="pre">product_supplier_id</span></span><a class="headerlink" href="#inventory.models.Software.product_supplier_id" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.product_supplier_id_id">
+<span class="sig-name descname"><span class="pre">product_supplier_id_id</span></span><a class="headerlink" href="#inventory.models.Software.product_supplier_id_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.software_name">
+<span class="sig-name descname"><span class="pre">software_name</span></span><a class="headerlink" href="#inventory.models.Software.software_name" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.models.Software.software_version">
+<span class="sig-name descname"><span class="pre">software_version</span></span><a class="headerlink" href="#inventory.models.Software.software_version" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-inventory.tables">
+<span id="inventory-tables-module"></span><h2>inventory.tables module<a class="headerlink" href="#module-inventory.tables" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.tables.</span></span><span class="sig-name descname"><span class="pre">DeviceTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pinned_row_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_page_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.tables.DeviceTable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.tables.DeviceTable.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.DJANGO_TABLES2_TEMPLATE">
+<span class="sig-name descname"><span class="pre">DJANGO_TABLES2_TEMPLATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django_tables2/bootstrap4.html'</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.DJANGO_TABLES2_TEMPLATE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'class':</span> <span class="pre">'table-striped</span> <span class="pre">table-hover</span> <span class="pre">table</span> <span class="pre">table-bordered</span> <span class="pre">text-nowrap',</span> <span class="pre">'li':</span> <span class="pre">{'class':</span> <span class="pre">'page-item'},</span> <span class="pre">'th':</span> <span class="pre">{'class':</span> <span class="pre">''}}</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.attrs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('product_id',)</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.row_attrs">
+<span class="sig-name descname"><span class="pre">row_attrs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'class':</span> <span class="pre">&lt;function</span> <span class="pre">DeviceTable.Meta.&lt;lambda&gt;&gt;}</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.row_attrs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.Meta.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('device_name',</span> <span class="pre">'supplier',</span> <span class="pre">'product',</span> <span class="pre">'product_id__version',</span> <span class="pre">'product_id__type')</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.Meta.sequence" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.DeviceTable.base_columns">
+<span class="sig-name descname"><span class="pre">base_columns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'automatic_import':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'communication_capability':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'configuration_file':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'criticality':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'csv_import':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'device_name':</span> <span class="pre">&lt;django_tables2.columns.linkcolumn.LinkColumn</span> <span class="pre">object&gt;,</span> <span class="pre">'group':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'id':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'interdependencies':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'ip_address':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'location':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'mac_address':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'network':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'os':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'product':</span> <span class="pre">&lt;django_tables2.columns.linkcolumn.LinkColumn</span> <span class="pre">object&gt;,</span> <span class="pre">'product_id__type':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'product_id__version':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'redundancy':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'role':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'serial_number':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'supplier':</span> <span class="pre">&lt;django_tables2.columns.linkcolumn.LinkColumn</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.tables.DeviceTable.base_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inventory.tables.</span></span><span class="sig-name descname"><span class="pre">ProductTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pinned_row_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_page_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.tables.ProductTable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="headerlink" href="#inventory.tables.ProductTable.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable.Meta.DJANGO_TABLES2_TEMPLATE">
+<span class="sig-name descname"><span class="pre">DJANGO_TABLES2_TEMPLATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django_tables2/bootstrap4.html'</span></em><a class="headerlink" href="#inventory.tables.ProductTable.Meta.DJANGO_TABLES2_TEMPLATE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#inventory.tables.ProductTable.Meta.exclude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#inventory.tables.ProductTable.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inventory.tables.ProductTable.base_columns">
+<span class="sig-name descname"><span class="pre">base_columns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'endOfSupport':</span> <span class="pre">&lt;django_tables2.columns.datecolumn.DateColumn</span> <span class="pre">object&gt;,</span> <span class="pre">'id':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'model':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'product_supplier_id':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'type':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;,</span> <span class="pre">'version':</span> <span class="pre">&lt;django_tables2.columns.base.Column</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#inventory.tables.ProductTable.base_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-inventory.urls">
+<span id="inventory-urls-module"></span><h2>inventory.urls module<a class="headerlink" href="#module-inventory.urls" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-inventory.views">
+<span id="inventory-views-module"></span><h2>inventory.views module<a class="headerlink" href="#module-inventory.views" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.change_device">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">change_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.change_device" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the change view for the <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.DeviceForm" title="inventory.forms.DeviceForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.change_product">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">change_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.change_product" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the change view for the <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.ProductForm" title="inventory.forms.ProductForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.change_software">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">change_software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.change_software" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the change view for the <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">Software</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.SoftwareForm" title="inventory.forms.SoftwareForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SoftwareForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.change_supplier">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">change_supplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.change_supplier" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the change view for the <a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.SupplierForm" title="inventory.forms.SupplierForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupplierForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.create_device">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">create_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.create_device" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the create view for the <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.DeviceForm" title="inventory.forms.DeviceForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.create_product">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">create_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.create_product" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the create view for the <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.ProductForm" title="inventory.forms.ProductForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.create_software">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">create_software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.create_software" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the create view for the <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">Software</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.SoftwareForm" title="inventory.forms.SoftwareForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SoftwareForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.create_supplier">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">create_supplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.create_supplier" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the create view for the <a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a> model
+It uses the <a class="reference internal" href="#inventory.forms.SupplierForm" title="inventory.forms.SupplierForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupplierForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.dashboard">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.dashboard" title="Permalink to this definition"></a></dt>
+<dd><p>This is the view function for the Dashboard view (Home)
+It gets all the <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">devices</span></code></a>, <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">products</span></code></a>,
+<a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">suppliers</span></code></a> and <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">software</span></code></a> from the database
+It also creates the <a class="reference internal" href="#inventory.forms.UploadFileForm" title="inventory.forms.UploadFileForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">UploadFileForm</span></code></a>, used for the Excel/CSV Import Functionality</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;devices&#39;</span><span class="p">:</span> <span class="n">devices</span><span class="p">,</span>
+<span class="s1">&#39;products&#39;</span><span class="p">:</span> <span class="n">products</span><span class="p">,</span>
+<span class="s1">&#39;suppliers&#39;</span><span class="p">:</span> <span class="n">suppliers</span><span class="p">,</span>
+<span class="s1">&#39;softwares&#39;</span><span class="p">:</span> <span class="n">softwares</span><span class="p">,</span>
+<span class="s1">&#39;total_devices&#39;</span><span class="p">:</span> <span class="n">devices</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+<span class="s1">&#39;total_products&#39;</span><span class="p">:</span> <span class="n">products</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+<span class="s1">&#39;total_suppliers&#39;</span><span class="p">:</span> <span class="n">suppliers</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+<span class="s1">&#39;total_software&#39;</span><span class="p">:</span> <span class="n">softwares</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+<span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">UploadFileForm</span><span class="p">(),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.delete_device">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">delete_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.delete_device" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the delete view for the <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.delete_product">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">delete_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.delete_product" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the delete view for the <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.delete_software">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">delete_software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.delete_software" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the delete view for the <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">Software</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.delete_supplier">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">delete_supplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.delete_supplier" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the delete view for the <a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.device">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.device" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the detail view for the <a class="reference internal" href="#inventory.models.Device" title="inventory.models.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.download_file">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.download_file" title="Permalink to this definition"></a></dt>
+<dd><p>This function lets the user download the whole database as csv</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.index">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.index" title="Permalink to this definition"></a></dt>
+<dd><p>This function provides the <a class="reference internal" href="#inventory.tables.DeviceTable" title="inventory.tables.DeviceTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceTable</span></code></a> for the table view. It also implements the
+export of the table view</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.login_page">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">login_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.login_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is the view function for the login</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.logout_user">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">logout_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.logout_user" title="Permalink to this definition"></a></dt>
+<dd><p>This function logs the user out and redirects to the login page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.network_scan">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">network_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.network_scan" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function to start a network_scan and hand the data to the filehandler</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.product">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.product" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the detail view for the <a class="reference internal" href="#inventory.models.Product" title="inventory.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.register_page">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">register_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.register_page" title="Permalink to this definition"></a></dt>
+<dd><p>This is the view function for the registration
+It Uses the <a class="reference internal" href="#inventory.forms.CreateUserForm" title="inventory.forms.CreateUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateUserForm</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.s7_scan">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">s7_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.s7_scan" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function to start a s7_scan and hand the data to the filehandler</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.software">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.software" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the detail view for the <a class="reference internal" href="#inventory.models.Software" title="inventory.models.Software"><code class="xref py py-class docutils literal notranslate"><span class="pre">Software</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.supplier">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">supplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.supplier" title="Permalink to this definition"></a></dt>
+<dd><p>This is the function for the detail view for the <a class="reference internal" href="#inventory.models.ProductSupplier" title="inventory.models.ProductSupplier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSupplier</span></code></a> model</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pk</strong> – </p></li>
+<li><p><strong>request</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.views.upload_file">
+<span class="sig-prename descclassname"><span class="pre">inventory.views.</span></span><span class="sig-name descname"><span class="pre">upload_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.views.upload_file" title="Permalink to this definition"></a></dt>
+<dd><p>This function implements the <a class="reference internal" href="#inventory.forms.UploadFileForm" title="inventory.forms.UploadFileForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">UploadFileForm</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only for logged in Users</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -291,7 +1800,7 @@ the filehandler. It is an example of a module to expand the asset management DB 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="modules.html" class="btn btn-neutral float-left" title="open_assetmanagement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="inventory.migrations.html" class="btn btn-neutral float-right" title="inventory.migrations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="manage.html" class="btn btn-neutral float-right" title="manage module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
