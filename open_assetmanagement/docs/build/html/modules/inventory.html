@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>inventory package &mdash; open_assetmanagement 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="inventory.migrations package" href="inventory.migrations.html" />
+    <link rel="prev" title="open_assetmanagement" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> open_assetmanagement
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">open_assetmanagement</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">inventory package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="inventory.migrations.html">inventory.migrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.filehandler">inventory.filehandler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.csv_to_device"><code class="docutils literal notranslate"><span class="pre">csv_to_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.csv_to_xlsx"><code class="docutils literal notranslate"><span class="pre">csv_to_xlsx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.handle_uploaded_file"><code class="docutils literal notranslate"><span class="pre">handle_uploaded_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.filehandler.xlsx_to_csv"><code class="docutils literal notranslate"><span class="pre">xlsx_to_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory.network_discovery_module">inventory.network_discovery_module module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.crackmapexec"><code class="docutils literal notranslate"><span class="pre">crackmapexec()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.data_combine"><code class="docutils literal notranslate"><span class="pre">data_combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.dict_to_csv"><code class="docutils literal notranslate"><span class="pre">dict_to_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.network_discovery"><code class="docutils literal notranslate"><span class="pre">network_discovery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inventory.network_discovery_module.nmap_discovery"><code class="docutils literal notranslate"><span class="pre">nmap_discovery()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inventory">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_assetmanagement.html">open_assetmanagement package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">open_assetmanagement</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">open_assetmanagement</a> &raquo;</li>
+      <li>inventory package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/inventory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inventory-package">
+<h1>inventory package<a class="headerlink" href="#inventory-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inventory.migrations.html">inventory.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inventory.migrations.html#module-inventory.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-inventory.filehandler">
+<span id="inventory-filehandler-module"></span><h2>inventory.filehandler module<a class="headerlink" href="#module-inventory.filehandler" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.filehandler.csv_to_device">
+<span class="sig-prename descclassname"><span class="pre">inventory.filehandler.</span></span><span class="sig-name descname"><span class="pre">csv_to_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.filehandler.csv_to_device" title="Permalink to this definition"></a></dt>
+<dd><p>This function adds data from the given csv file to the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – The filename of the csv to be imported</p></li>
+<li><p><strong>delimiter</strong> (<em>char</em>) – The seperator of the csv file. The default is ‘,’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.filehandler.csv_to_xlsx">
+<span class="sig-prename descclassname"><span class="pre">inventory.filehandler.</span></span><span class="sig-name descname"><span class="pre">csv_to_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_name_xlsx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.filehandler.csv_to_xlsx" title="Permalink to this definition"></a></dt>
+<dd><p>This function converts a csv file to an Excel file (.xlsx) using the module pandas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d_loc</strong> (<em>str</em>) – The directory where the file is located</p></li>
+<li><p><strong>d_name</strong> (<em>str</em>) – The filename of the csv file to be converted</p></li>
+<li><p><strong>d_name_xlsx</strong> – The filename of the xlsx file to be created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.filehandler.handle_uploaded_file">
+<span class="sig-prename descclassname"><span class="pre">inventory.filehandler.</span></span><span class="sig-name descname"><span class="pre">handle_uploaded_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.filehandler.handle_uploaded_file" title="Permalink to this definition"></a></dt>
+<dd><p>Handle the uploaded csv or Excel file.
+If it’s a csv send directly to csv_to_device else convert to csv first.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> (<em>Bytestream</em>) – Uploaded File.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.filehandler.xlsx_to_csv">
+<span class="sig-prename descclassname"><span class="pre">inventory.filehandler.</span></span><span class="sig-name descname"><span class="pre">xlsx_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_name_csv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory.filehandler.xlsx_to_csv" title="Permalink to this definition"></a></dt>
+<dd><p>This function converts an Excel file to a csv file using the module pandas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d_loc</strong> (<em>str</em>) – The directory where the file is located</p></li>
+<li><p><strong>d_name</strong> (<em>str</em>) – The filename of the xlsx file to be converted</p></li>
+<li><p><strong>d_name_csv</strong> – The filename of the csv file to be created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-inventory.network_discovery_module">
+<span id="inventory-network-discovery-module-module"></span><h2>inventory.network_discovery_module module<a class="headerlink" href="#module-inventory.network_discovery_module" title="Permalink to this heading"></a></h2>
+<p>network_discovery_module</p>
+<p>This module is an example for a module that could extend the assetmanagement tool
+It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
+in the form of a csv file</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.network_discovery_module.crackmapexec">
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">crackmapexec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scanning_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#inventory.network_discovery_module.crackmapexec" title="Permalink to this definition"></a></dt>
+<dd><p>Discovers Assets with the command-line-tool crackmapexec and returns them in a Dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scanning_range</strong> – str IP Range of Network to be scanned</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Discovered Data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.network_discovery_module.data_combine">
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">data_combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.data_combine" title="Permalink to this definition"></a></dt>
+<dd><p>This Function combines the Dict Data from the Outputs of the CME and NMAP Scans to one complete Dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_cme</strong> – CME data output by the cme function</p></li>
+<li><p><strong>data_nmap</strong> – Nmap data output by the nmap function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Data from the nmap scan combined with the additional data from cme</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.network_discovery_module.dict_to_csv">
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">dict_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.dict_to_csv" title="Permalink to this definition"></a></dt>
+<dd><p>This function converts the used Dict Format to csv</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>CSV File containing data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.network_discovery_module.network_discovery">
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">network_discovery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#inventory.network_discovery_module.network_discovery" title="Permalink to this definition"></a></dt>
+<dd><p>This is the Function to call when a network discovery is wanted. It returns Data as CSV for further processing by
+the filehandler. It is an example of a module to expand the asset management DB and Webapp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scan_range</strong> – str IP Range of Network to be scanned</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>CSV to be handled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory.network_discovery_module.nmap_discovery">
+<span class="sig-prename descclassname"><span class="pre">inventory.network_discovery_module.</span></span><span class="sig-name descname"><span class="pre">nmap_discovery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scanning_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#inventory.network_discovery_module.nmap_discovery" title="Permalink to this definition"></a></dt>
+<dd><p>Discovers Assets with the command-line-tool nmap and returns them in a Dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scanning_range</strong> – str IP Range of Network to be scanned</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Discovered Data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-inventory">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-inventory" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="open_assetmanagement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="inventory.migrations.html" class="btn btn-neutral float-right" title="inventory.migrations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, lucapoehler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
