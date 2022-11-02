@@ -270,6 +270,3 @@ def network_discovery(scan_range: str, level: int, timeout: int) -> str:
 
     # Return csv filename to be imported by the filehandler into database
     return 'network_discovery.csv'
-
-
-s7_discovery(RANGE)
