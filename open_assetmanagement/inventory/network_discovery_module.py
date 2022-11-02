@@ -1,7 +1,5 @@
 """
-network_discovery_module
-
-This module is an example for a module that could extend the asset-management tool
+This module is an example for a module that could extend the asset-management tool.
 It collects data on assets in the network with the tools nmap and crackmapexec and sends this data to the filehandler
 in the form of a csv file
 
