@@ -27,7 +27,8 @@ class DeviceTable(tables.Table):
         sequence = ("device_name", "supplier", "product", "product_id__version", "product_id__type", )
         exclude = ("product_id", )
         attrs = {
-            "class": "table-striped table-hover table table-bordered text-nowrap",
+            "id": "assets",
+            "class": "table-striped table-hover table table-bordered text-nowrap display",
             "th": {
                 "class": ""
             },

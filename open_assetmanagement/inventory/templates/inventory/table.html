@@ -11,7 +11,7 @@
                     {% for column in table.columns %}
                         <th {{ column.attrs.th.as_html }}>
                             {% if column.orderable %}
-                                <a href="{% querystring table.prefixed_order_by_field=column.order_by_alias.next %}">{{ column.header }}</a>
+                                {{ column.header }}
                             {% else %}
                                 {{ column.header }}
                             {% endif %}

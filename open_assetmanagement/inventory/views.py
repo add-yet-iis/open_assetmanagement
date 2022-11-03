@@ -47,17 +47,10 @@ def dashboard(request):
     products = Product.objects.all()
     suppliers = ProductSupplier.objects.all()
     softwares = Software.objects.all()
-    context = {
-        'devices': devices,
-        'products': products,
-        'suppliers': suppliers,
-        'softwares': softwares,
-        'total_devices': devices.count(),
-        'total_products': products.count(),
-        'total_suppliers': suppliers.count(),
-        'total_software': softwares.count(),
-        'form': UploadFileForm(),
-    }
+    context = {'devices': devices, 'products': products, 'suppliers': suppliers, 'softwares': softwares,
+               'total_devices': devices.count(), 'total_products': products.count(),
+               'total_suppliers': suppliers.count(), 'total_software': softwares.count(), 'form': UploadFileForm(),
+               'networkdiscovery_form': NetworkdiscoveryForm(), 's7discovery_form': S7discoveryForm()}
     return render(request, "inventory/dashboard.html", context)
 
 
@@ -133,15 +126,7 @@ def index(request):
     """
     context = {}
     devices = Device.objects.all()
-    context['filter'] = DeviceFilter(request.GET, queryset=devices)
-    export_format = request.GET.get("_export", None)
-    context['table'] = DeviceTable(context['filter'].qs)
-    RequestConfig(request, paginate={"per_page": 10}).configure(context['table'])
-    if TableExport.is_valid_format(export_format):
-        exporter = TableExport(export_format, context['table'])
-        return exporter.response("assets".format(export_format))
-    context['networkdiscovery_form'] = NetworkdiscoveryForm()
-    context['s7discovery_form'] = S7discoveryForm()
+    context['table'] = DeviceTable(devices)
     return render(request, "inventory/index.html", context)
 
 
