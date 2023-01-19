@@ -170,13 +170,7 @@ access system ports</p>
 <li><p>Run the Server as Sudo oder Root (NOT RECOMMENDED! Very Unsafe)</p></li>
 <li><p>Give python or nmap passwordless sudo access (Also not recommended and very Unsafe, possible PrivEsc)</p></li>
 <li><dl>
-<dt>Give the specific script passwordless sudo access, and make it only writable by the root user, so ther cant be changes (version used)</dt><dd><p>Add the following line to the /etc/sudoers File:
-.. code-block:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALL</span>  <span class="n">ALL</span><span class="o">=</span><span class="p">(</span><span class="n">ALL</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">full_path_to_folder</span><span class="o">&gt;/</span><span class="n">open_assetmanagement</span><span class="o">/</span><span class="n">open_assetmanagement</span><span class="o">/</span><span class="n">inventory</span><span class="o">/</span><span class="n">network_discovery_module</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>This lets any user, run the networkdiscovery script as sudo without a password</p>
-</dd>
+<dt>Give the specific script passwordless sudo access, and make it only writable by the root user, so there cant be changes </dt>
 </dl>
 </li>
 <li><p>Install NMAP with capabilities (<a class="reference external" href="https://secwiki.org/w/Running_nmap_as_an_unprivileged_user">https://secwiki.org/w/Running_nmap_as_an_unprivileged_user</a>)</p></li>
