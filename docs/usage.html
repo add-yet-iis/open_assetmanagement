@@ -189,7 +189,7 @@ access system ports</p>
 </section>
 <section id="working-with-the-development-server">
 <span id="developmentserver"></span><h2>Working with the Development Server<a class="headerlink" href="#working-with-the-development-server" title="Permalink to this heading"></a></h2>
-<p>Migrate the Database (if there are changes to the models)</p>
+<p>Migrate the Database</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span><span class="gp">$ </span>python manage.py makemigrations
 <span class="gp gp-VirtualEnv">(venv)</span><span class="gp">$ </span>python manage.py migrate
 </pre></div>
@@ -207,15 +207,7 @@ access system ports</p>
 </pre></div>
 </div>
 <p>Now you should be able to access the Server under the address stated.
-To login, create a new user or use the admin account for access to the admin panel</p>
-<dl class="field-list simple">
-<dt class="field-odd">Username</dt>
-<dd class="field-odd"><p>admin</p>
-</dd>
-<dt class="field-even">PW</dt>
-<dd class="field-even"><p>Vsc&amp;fbce4WzHQv</p>
-</dd>
-</dl>
+To login, create a new user or create a superuser account for access to the admin panel with "python manage.py createsuperuser"</p>
 </section>
 </section>
 
