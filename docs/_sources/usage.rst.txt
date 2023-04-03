@@ -102,6 +102,16 @@ It ist based on the `Kali Virtual Machine  <https://www.kali.org/get-kali/#kali-
 
     BE CAREFUL THE APP IS UNDER ACTIVE DEVELOPMENT.
     BUGS MAY OCCUR
+ 
+ #. Step:
+    Generate a private key and add it to the .env file (see .env)
+    
+    In Python:
+    
+    .. code-block::
+    
+        >>> from django.core.management.utils import get_random_secret_key
+        >>> print(get_random_secret_key())
 
 #. Step:
     To use the Networkdiscovery Function you need NMAP, Netdiscover and CrackMapExec
