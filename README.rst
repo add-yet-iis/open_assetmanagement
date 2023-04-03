@@ -8,4 +8,4 @@ to import Industrial OT devices via Modbus or OPC UA.
 The base project is developed by Luca Poehler for his Bachelor Thesis at FH Aachen, and the
 further development will potentially be done by additional Bachelor Thesis.
 
-Full Documentation: https://lucapoehler.github.io/open_assetmanagement/
+Full Documentation: https://add-yet-iis.github.io/open_assetmanagement/
