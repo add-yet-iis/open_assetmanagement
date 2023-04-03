@@ -103,7 +103,7 @@ It ist based on the `Kali Virtual Machine  <https://www.kali.org/get-kali/#kali-
     BE CAREFUL THE APP IS UNDER ACTIVE DEVELOPMENT.
     BUGS MAY OCCUR
  
- #. Step:
+#. Step:
     Generate a private key and add it to the .env file (see .env)
     
     In Python:
