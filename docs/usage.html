@@ -154,6 +154,13 @@ The folder should look like this:</p>
 <span class="s1">&#39;4.1.2&#39;</span>
 </pre></div>
 </div>
+<div>
+    Generate a private key and add it to the .env file (see .env)
+    
+    In Python:
+        >>> from django.core.management.utils import get_random_secret_key
+        >>> print(get_random_secret_key())  
+</div>
 <p>Now you are ready to start!</p>
 <p>BE CAREFUL THE APP IS UNDER ACTIVE DEVELOPMENT.
 BUGS MAY OCCUR</p>
